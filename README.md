@@ -1,8 +1,8 @@
 # Event Backend #
 Project Event Backend documentation.
 
-[![Build Status](https://travis-ci.org/pjmolina/test01.svg?branch=master)](https://travis-ci.org/pjmolina/test01)
-[![bitHound Overall Score](https://www.bithound.io/github/pjmolina/test01/badges/score.svg)](https://www.bithound.io/github/pjmolina/test01)
+[![Build Status](https://travis-ci.org/pjmolina/event-backend.svg?branch=master)](https://travis-ci.org/pjmolina/event-backend)
+[![bitHound Overall Score](https://www.bithound.io/github/pjmolina/event-backend/badges/score.svg)](https://www.bithound.io/github/pjmolina/event-backend)
 
 Event Backend services implemented using the following technologies:
 

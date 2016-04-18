@@ -40,16 +40,17 @@ Run
 ## Karma UI Test ##
 Install Karma and dependencies:
 
-```npm install -g karma-chrome-launcher karma-coverage karma-firefox-launcher karma-jasmine karma-junit-reporter karma-phantomjs-launcher karma-teamcity-reporter@0.2.1 mocha-teamcity-cov-reporter jasmine-reporters karma@0.9.8 protractor 
+```
+npm install -g karma-chrome-launcher karma-coverage karma-firefox-launcher karma-jasmine karma-junit-reporter karma-phantomjs-launcher karma-teamcity-reporter@0.2.1 mocha-teamcity-cov-reporter jasmine-reporters karma@0.9.8 protractor 
 ```
 
-And then run:
-```npm test-ui-single-run```
+And then run: `npm test-ui-single-run`
 
 
 ## Check for JS code quality ##
+
 Run:
-	- JSHint: `grunt jshint`
-	- ESLint: `grunt eslint` for console or an HTML report: `grunt eslint-report`
+- JSHint: `grunt jshint`
+- ESLint: `grunt eslint` for console or an HTML report: `grunt eslint-report`
 
 

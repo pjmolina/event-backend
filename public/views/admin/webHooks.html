@@ -1,0 +1,185 @@
+<img class="adminLogo" src="/images/adminHook.png"/>
+<div class="row row-conf">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<h3 class="text-center" translate="webhooks.title"></h3>
+		<p  translate="webhooks.summary"></p>
+
+		<h4  translate="webhooks.enablewk"></h4>
+		<div class="whEnable"  translate="webhooks.enablewkDescription"></div>
+		<div class="btn-toolbar whEnable">
+			<div class="btn-group" role="toolbar">
+			  <button type="button btn-tb" ng-class="{active : enableWebhooks}" class="btn btn-tb" role="group" ng-click="enableWh(true)" translate="label.enable"></button>
+			  <button type="button btn-tb" ng-class="{active : !enableWebhooks}" class="btn btn-tb" role="group" ng-click="enableWh(false)" translate="label.disable"></button>
+			</div>
+		</div>  
+		<br/>
+
+		<div class="row">	
+			<error-zone ng-model="errors"></error-zone>
+		</div>
+
+		<div ng-show="enableWebhooks">
+			<h4 translate="webhooks.webhooks"></h4>
+
+			<table class="wbTable data-tabe table table-hover table-striped table-condensed">
+				<thead>
+					<th class="md-col-1" translate="webhooks.fields.on"></th>
+					<th class="md-col-2" translate="webhooks.fields.resource"></th>
+					<th class="md-col-2" translate="webhooks.fields.operations"></th>
+					<th class="md-col-1" translate="webhooks.fields.do"></th>
+					<th class="md-col-1" translate="webhooks.fields.method"></th>
+					<th class="md-col-3" translate="webhooks.fields.toUrl"></th>
+					<th class="md-col-1" translate="webhooks.fields.enabled"></th>
+					<th class="md-col-1"></th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="wh in webhooks" class="clickable" ng-click="startEditHook(wh, $event)">
+						<td><span class="glyphicon glyphicon-chevron-right"></span></td>
+						<td class="monospaced">{{wh.resource}}</td>
+						<td class="monospaced">{{wh.operation}}</td>
+						<td><span class="glyphicon glyphicon-arrow-right"></span></td>
+						<td class="monospaced">{{wh.httpMethod}}</td>
+						<td class="monospaced"><div class="truncate">{{wh.urlTemplate}}</div></td>
+						<td class="monospaced">{{wh.enabled | checkmark}}</td>
+						<td>
+							<a ng-click="deleteHook(wh, $event)"><span class="glyphicon glyphicon-remove error" tooltip="{{'cmd.delete' | translate}}"></span></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<br/>
+
+			<div class="panel panel-default">
+				<div class="panel-heading configTitle">
+					<div class="panel-buttons-r">
+						<button class="btn btn-warning" ng-show="canEditHook()" ng-click="cancelEditHook()" translate="cmd.cancel"></button>
+						<button class="btn btn-default" ng-show="canEditHook()" ng-click="editHook()" translate="webhooks.cmd.updateHook"></button>
+						<button class="btn btn-default" ng-show="canAddHook()" ng-click="addHook()" translate="webhooks.cmd.addHook"></button>
+					</div>
+					<span translate="webhooks.label.hook"></span>
+				</div>
+				<div id="webhookConfigurator" class="panel-body">
+					<div class="wh-label1">
+						<span translate="webhooks.fields.on"></span>
+						<label for="resource" translate="webhooks.fields.resource"></label> 
+					</div>
+					<select id="resource" class="whCombobox2 form-control" 
+					        ng-model="newWebhook.resource" 
+					        ng-options="r.name for r in resources">					
+					</select>
+
+					<label for="operation" translate="webhooks.fields.operations"></label> 
+					<select id="operation" class="whCombobox form-control" ng-model="newWebhook.operation" ng-options="op.value for op in operations">
+						<option value="Add"     translate="webhooks.operation.add"></option>
+						<option value="Delete"  translate="webhooks.operation.delete"></option>
+						<option value="Modify"  translate="webhooks.operation.modify"></option>
+						<option value="* (All)" translate="webhooks.operation.all"></option>
+					</select>
+					
+					<label for="method" translate="webhooks.selectFromTemplate"></label> 
+					<select id="method" class="wh-template-selector form-control" 
+										ng-model="newWebhook.template" 
+										ng-options="tpl.label for tpl in hookTemplates"
+										ng-change="hookTemplateSelected()">
+					</select>
+					
+					<br/>
+
+					<div class="wh-label1">
+						<span translate="webhooks.fields.do"></span>
+						<label for="method" translate="webhooks.fields.method"></label> 
+					</div>
+					<select id="method" class="whCombobox form-control" ng-model="newWebhook.httpMethod" ng-options="mt.value for mt in httpMethods">
+						<option value="POST" translate="webhooks.method.post"></option>
+						<option value="GET"  translate="webhooks.method.get"></option>
+					</select>
+
+					<br/>
+					
+					<div class="wh-label1">
+						<label for="targetUrl" translate="webhooks.fields.toUrl"></label> 
+					</div>
+					<input id="targetUrl" class="whUrl form-control" type="text" placeholder="http://acme.com/service/{id}" ng-model="newWebhook.urlTemplate"/>
+			
+					<div class="btn-toolbar whEnable pull-right">
+						<div class="btn-group" role="toolbar">
+						  <button type="button btn-tb" ng-class="{active : newWebhook.enabled}" class="btn btn-tb" role="group" translate="label.enable" ng-click="enableCurrentWh(newWebhook, true)"></button>
+						  <button type="button btn-tb" ng-class="{active : !newWebhook.enabled}" class="btn btn-tb" role="group" translate="label.disable" ng-click="enableCurrentWh(newWebhook, false)"></button>
+						</div>
+					</div>  
+
+					<div>
+						<h4 translate="webhooks.parameters"></h4>
+						<div id="webParameters" class="web-parameters">
+							<div ng-repeat="par in newWebhook.parameters">
+								<select id="parType" 
+								        class="paramType-combobox form-control" 
+								        ng-model="par.type" 
+								        ng-options="paramType.key as paramType.value for paramType in paramTypes">
+								</select>
+								<input type="text" id="parKey" 
+									   ng-model="par.key" 
+									   placeholder="{{'webhooks.placeholder.key' | translate}}" 
+									   class="paramType form-control"/>
+								<input type="text" id="parValue" 
+								       ng-model="par.value" 
+								       placeholder="{{'webhooks.placeholder.value' | translate}}" 
+								       class="paramType form-control"/>
+								<a ng-click="removeParameter(par)">
+									<span class="glyphicon glyphicon-remove error" 
+									      tooltip="{{'cmd.delete' | translate}}"></span>
+								</a>
+							</div>
+						</div>
+						<button ng-click="addParameter()"  
+						        class="btn btn-primary btn-add-parameter">
+						        <span class="glyphicon glyphicon-plus"></span>
+						        <span translate="webhooks.addParameter"></span>
+						</button>
+					</div>
+					<div ng-show="newWebhook.httpMethod.key==='POST' || newWebhook.httpMethod.key==='PUT'">
+						<h4 translate="webhooks.body"/>
+						<div>
+							<label for="contentType" translate="webhooks.contentType"/>&nbsp;
+							<select id="contentType" 
+								        class="contentType-combobox form-control" 
+								        ng-model="newWebhook.contentType" 
+								        ng-options="ct.value for ct in contentTypes">
+							</select>
+							<button ng-click="addBodyTemplate()"
+								    class="btn btn-primary">
+								<span class="glyphicon glyphicon-plus"></span>
+								<span translate="webhooks.addBodyTemplate"></span>
+							</button>
+						</div>
+						<div>
+							<label for="bodyTemplate" translate="webhooks.bodyTemplate"/>
+							<textarea id="bodyTemplate" class="form-control monospaced"
+								      cols="60" rows="10" 
+								      ng-model="newWebhook.bodyTemplate"/>
+						</div>
+						
+					</div>
+
+					<div class="editor-legend">
+						<span translate="webhooks.legend"></span>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<button class="btn btn-primary" ng-show="!isDirty" ng-click="gotoHome($event)" >
+			<span class="glyphicon glyphicon-chevron-left"></span>
+			<span translate="cmd.back"></span>
+		</button>
+		<button class="btn btn-warning" ng-show="isDirty" ng-click="cancel($event)"  translate="cmd.cancel"></button>
+		<button class="btn btn-primary" ng-show="isDirty" ng-click="save($event)"  translate="cmd.applyChanges"></button>
+		<br/>
+		<br/>
+	</div>
+	<div class="col-md-1"></div>
+</div>

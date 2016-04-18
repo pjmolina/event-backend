@@ -1,0 +1,83 @@
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<h1 translate="appName"></h1>
+		<p translate="main.welcome"></p>
+
+		<div class="row text-left">
+			<div class="col-md-6">
+				<h2 translate="admin.resources"></h2>
+				<ul class="nav nav-pills nav-stacked">	
+					<li ng-show="canAccessResource.place">
+						<a class="entryMenu" 
+						   href="#/place"
+						   translate="label.class.plural.place">
+						</a>
+					</li>
+					<li ng-show="canAccessResource.sessionTalk">
+						<a class="entryMenu" 
+						   href="#/sessionTalk"
+						   translate="label.class.plural.sessionTalk">
+						</a>
+					</li>
+					<li ng-show="canAccessResource.speaker">
+						<a class="entryMenu" 
+						   href="#/speaker"
+						   translate="label.class.plural.speaker">
+						</a>
+					</li>
+					<li ng-show="canAccessResource.sponsor">
+						<a class="entryMenu" 
+						   href="#/sponsor"
+						   translate="label.class.plural.sponsor">
+						</a>
+					</li>
+		
+				</ul>
+			</div>
+			
+			<div ng-show="userHasAdminRole()" class="col-md-6">
+				<h2 translate="admin.configuration"></h2>
+				<ul class="nav nav-pills nav-stacked">	
+					<li>
+						<a class="entryMenu" href="#/admin/users/">
+							<img src="/images/adminKey.png" class="admin-logo"/>
+							<span translate="main.admin.users"></span>
+						</a> 
+						<span translate="main.admin.usersDescription"></span>
+					</li>
+					<li>
+						<a class="entryMenu" href="#/admin/permissions/">
+							<img src="/images/adminPermissions.png" class="admin-logo"/>
+							<span translate="main.admin.permissions"></span>
+						</a> 
+						<span translate="main.admin.permissionsDescription"></span>
+					</li>					
+					<li>
+						<a class="entryMenu" href="#/admin/webHooks/">
+							<img src="/images/adminHook.png" class="admin-logo"/>
+							<span translate="main.admin.webhooks"></span>
+						</a> 
+						<span translate="main.admin.webhooksDescription"></span>
+					</li>
+				</ul>
+				
+			</div>
+		</div>	
+				
+		<br/>
+		<br/>
+		<p>
+			<span translate="main.exploreApi"></span> 
+			<span ></span> 
+			<a href="/api/swagger.json" target="_blank" translate="main.raw"></a>,
+			<span translate="main.orWith"></span> 
+			<a href="http://petstore.swagger.io/?url={{serviceUriBase}}/api/swagger.json%3Fapikey={{apikey}}" target="_blank" translate="main.apiExplorer"></a>.
+		</p>
+		<a href="http://online.swagger.io/validator/debug/?url={{serviceUriBase}}/api/swagger.json%3Fapikey={{apikey}}" target="_blank">
+			<img src="http://online.swagger.io/validator/?url={{serviceUriBase}}/api/swagger.json%3Fapikey={{apikey}}">
+		</a>
+
+	</div>
+	<div class="col-md-2"></div>
+</div>

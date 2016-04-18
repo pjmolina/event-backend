@@ -1,0 +1,24 @@
+<div class="{{class}}">
+	<div class="searchZone">
+		<input id="searchTextbox" 
+			   type="string" 
+			   ng-model="innerSearchText" 
+			   ng-change="typedTextSearch()" 
+			   placeholder="{{'component.search.searchCriteria' | translate }}" 
+			   />
+		<div class="searchIndicators">
+			<span ng-show="searchContext.isUserIsTyping" class="glyphicon glyphicon-pencil"></span>
+			<span ng-show="searchContext.isSearching"    class="glyphicon glyphicon-flash"></span>
+		</div>
+		<button class="btn btn-sm btn-info" 
+				ng-click="clearSearch()" 
+				ng-hide="searchContext.searchText == '' || searchContext.searchText == null"
+				translate="{{'component.search.clear' | translate }}">			    
+		</button>
+	</div>
+	<div class="foundZone">
+		<span ng-show="searchContext.totalItems===0" translate="component.search.data0"></span>
+		<span ng-show="searchContext.totalItems===1" translate="component.search.data1"></span>
+		<span ng-show="searchContext.totalItems > 1">{{searchContext.totalItems | number}} {{'component.search.dataMany' | translate }}</span>
+	</div>
+</div>

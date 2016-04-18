@@ -1,0 +1,158 @@
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<form class="form-inline text-left" name="editForm" keypress-enter="submit()" keypress-esc="cancel()">
+			<h3 ng-show="isEdition"  class="text-center" translate="label.class.edit.sessionTalk"></h3>
+			<h3 ng-show="isCreation" class="text-center" translate="label.class.create.sessionTalk"></h3>
+			<h3 ng-show="isDeletion" class="text-center" translate="label.class.delete.sessionTalk"></h3>
+			<h3 ng-show="isView"     class="text-center" translate="label.class.singular.sessionTalk"></h3>			
+			<fieldset ng-show="dataReceived">
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="inputSessionType">SessionType</label>
+						<div>
+							<input id="inputSessionType" 
+								   name="inputSessionType"
+								   type="text" 
+								   class="form-control" 
+								   placeholder="SessionType" 
+								   ng-model="obj.sessionType" 
+								   ng-readonly="readOnly"
+								   required auto-focus />
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputName">Name</label>
+						<div>
+							<input id="inputName" 
+								   name="inputName"
+								   type="text" 
+								   class="form-control" 
+								   placeholder="Name" 
+								   ng-model="obj.name" 
+								   ng-readonly="readOnly"
+								   required />
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputTrack">Track</label>
+						<div>
+							<input id="inputTrack" 
+								   name="inputTrack"
+								   type="number"
+								   step="1" 
+								   class="form-control" 
+								   placeholder="Track" 
+								   ng-model="obj.track" 
+								   ng-readonly="readOnly"
+								   required />
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputLanguage">Language</label>
+						<div>
+							<input id="inputLanguage" 
+								   name="inputLanguage"
+								   type="text" 
+								   class="form-control" 
+								   placeholder="Language" 
+								   ng-model="obj.language" 
+								   ng-readonly="readOnly"
+								   required />
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputStarts">Starts</label>
+						<div>
+							<time-selector id="inputStarts" 
+										   name="inputStarts"
+										   ng-model="obj.starts"
+										   ng-readonly="readOnly"
+						       			   ng-required="false"
+						       			   />
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputEnds">Ends</label>
+						<div>
+							<time-selector id="inputEnds" 
+										   name="inputEnds"
+										   ng-model="obj.ends"
+										   ng-readonly="readOnly"
+						       			   ng-required="false"
+						       			   />
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputDescription">Description</label>
+						<div>
+							<input id="inputDescription" 
+								   name="inputDescription"
+								   type="text" 
+								   class="form-control" 
+								   placeholder="Description" 
+								   ng-model="obj.description" 
+								   ng-readonly="readOnly"
+								    />
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputSpeaker">Speaker</label>
+						<div>
+							<input id="inputSpeaker" 
+								   name="inputSpeaker"
+								   type="text" 
+								   class="form-control" 
+								   placeholder="(not assigned)" 
+								   ng-model="obj.actualSpeaker._displayLabel" 
+								   readonly  />
+							<button class="btn btn-default" ng-show="!readOnly && obj.actualSpeaker._displayLabel && obj.enableSpeaker" tooltip="Clear" ng-click="clearSpeaker()">
+								<span class="glyphicon glyphicon-remove" />
+							</button>
+							<button class="btn btn-default" ng-show="!readOnly && obj.enableSpeaker" tooltip="{{'cmd.select' | translate}}" ng-click="selectSpeaker()">
+								<span class="glyphicon glyphicon-search" />
+							</button>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<div class="row">	
+				<error-zone ng-model="errors"></error-zone>
+			</div>
+
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+			<div ng-show="uiWorking" class="loader"><img src="images/loader.gif" alt="Working..." /></div>
+
+			<div class="row acc-buttons">
+				<button type="button" ng-show="isView" class="btn btn-default" ng-click="cancel($event)">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<span translate="cmd.back"></span>
+				</button>
+				<button type="button" ng-show="isCreation" class="btn btn-primary" ng-click="add()" ng-disabled="editForm.$invalid" >
+					<span class="glyphicon glyphicon-plus"></span>
+					<span translate="cmd.create"></span>
+				</button>
+				<button type="button" ng-show="isEdition" class="btn btn-primary" ng-click="update()" ng-disabled="editForm.$invalid" >
+					<span class="glyphicon glyphicon-save"></span>
+					<span translate="cmd.update"></span>
+				</button>
+				<button type="button" ng-show="isDeletion" class="btn btn-primary" ng-click="delete()">
+					<span class="glyphicon glyphicon-trash"></span>
+					<span translate="cmd.delete"></span>
+				</button>
+				<button type="button" ng-show="canEdit" class="btn btn-primary" ng-click="gotoEdit()" ng-disabled="editForm.$invalid" >
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span translate="cmd.modify"></span>
+				</button>
+				<button type="button" ng-hide="isView" class="btn btn-default" ng-click="cancel($event)">
+					<span translate="cmd.cancel"></span>
+				</button>
+				<button type="button" ng-show="canDelete" class="btn btn-primary pull-right" ng-click="gotoDelete()" ng-disabled="editForm.$invalid" >
+					<span class="glyphicon glyphicon-trash"></span>
+					<span translate="cmd.confirmDeletion"></span>
+				</button>					
+			</div>
+		</form>
+	</div>
+	<div class="col-md-1"></div>
+</div>

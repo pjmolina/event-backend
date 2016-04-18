@@ -1,0 +1,552 @@
+{
+    "id": "602f528d-b5c5-4867-a680-0af28ca48a54",
+    "name": "SampleBackend",
+    "description": "Postman's collection for SampleBackend",
+    "order": [
+        "daca8493-655b-9393-b70c-17c12d4ab855"
+    ],
+    "folders": [
+    
+        {
+            "id": "58c8ea6b-9ebb-4fb8-a171-fc9ec5b4c425",
+            "name": "Diagnostic",
+            "description": "Diagnostic operations.",
+            "order": [
+                
+                "2f856f02-caa4-4594-826e-0cc12e843ff1",                
+                "298c99b1-2ffc-411c-92fe-9554aeb9a12c"                
+            ],
+            "owner": 0
+        },    
+        {
+            "id": "f112934a-25c7-4b23-80d4-6e68908d6ff4",
+            "name": "Place",
+            "description": "Collection for resource Place",
+            "order": [
+                
+                "9971078c-9425-4968-9c51-96ab50e91ae1",                
+                "6771b3b4-7efb-4fbb-aad2-e7375a067368",                
+                "33033683-e423-41b7-8316-98c1a4111ef5",                
+                "f88354c1-f087-439c-a73c-125c370027f4"                
+            ],
+            "owner": 0
+        },    
+        {
+            "id": "038c840e-071f-4bd7-82f0-ecbe1bb688f8",
+            "name": "SessionTalk",
+            "description": "Collection for resource SessionTalk",
+            "order": [
+                
+                "ecf98585-4764-4551-a3bd-f72b706f8935",                
+                "d0d2cfc4-0da0-4625-96df-142984dcead9",                
+                "1d232be2-027c-4db2-86a7-2fd7d2b89172",                
+                "3fba6a2d-a5ce-4e8a-998f-a04067d389ca"                
+            ],
+            "owner": 0
+        },    
+        {
+            "id": "85dc48a6-90f1-4a7c-92cf-5cb8b15a6762",
+            "name": "Speaker",
+            "description": "Collection for resource Speaker",
+            "order": [
+                
+                "4359d0b6-7ec0-4342-9041-23dc3469507f",                
+                "bedbb35b-8c9f-4cfa-9a34-92849ae00d0c",                
+                "83f704cd-d60a-481d-b4c5-78627596a7d2",                
+                "eeed4b81-5d14-46a7-b1c3-ce36c20d4c6f"                
+            ],
+            "owner": 0
+        },    
+        {
+            "id": "83686e79-7198-42dd-81ff-4590d9f48d0a",
+            "name": "Sponsor",
+            "description": "Collection for resource Sponsor",
+            "order": [
+                
+                "06d8660c-ddc9-4cca-a1c3-e4d7ebfece1b",                
+                "bb864132-700f-49b0-a9e6-1d965e9b7684",                
+                "026d5af7-b50a-4566-b46e-a6452dc1c781",                
+                "d6eb2d12-2d54-40bb-a634-bf8bd3752288"                
+            ],
+            "owner": 0
+        }    
+    ],
+    "timestamp": 1459362844888,
+    "owner": 0,
+    "remoteLink": "",
+    "public": false,
+    "requests": [
+                
+    {
+            "id": "0665f569-7773-4fda-ad33-aa1d9a04edd7",
+            "headers": "Authorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/swagger.json",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844888,
+            "name": "API Doc: Swagger 2.0",
+            "description": "Swagger 2.0 API Documentation",
+            "descriptionFormat": "",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "2f856f02-caa4-4594-826e-0cc12e843ff1",
+            "headers": "",
+            "url": "http://{{host}}:{{port}}/ping",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "normal",
+            "helperAttributes": {},
+            "time": 1459362844888,
+            "name": "Ping Service",
+            "description": "The Ping service allows to check if the service is up and running.\nIn production systems it can be used by Load Balancers to check if the current node is working.\nNo auth credentials are needed to call this service.\nA successfull response for a ping call is: `200 OK { \"msg\": \"pong\" }`",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "298c99b1-2ffc-411c-92fe-9554aeb9a12c",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/status",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844888,
+            "name": "Status Service",
+            "description": "The Status service provides information and versions of the running backend. This method requires authentication.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "9971078c-9425-4968-9c51-96ab50e91ae1",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/places?limit=10",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844903,
+            "name": "Query Place",
+            "description": "Query Place. Query syntax follows the BaucisJS conventions, see: https://github.com/wprl/baucis/wiki/Query-String-Parameters",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "6771b3b4-7efb-4fbb-aad2-e7375a067368",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/places",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "POST",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844903,
+            "name": "Create Place",
+            "description": "Creates a new Place.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"new_Name\",\n    \"location\" : { \"type\" : \"Point\", \"coordinates\" : [139.71, 35.65] },\n    \"address\" : \"new_Address\",\n    \"city\" : \"new_City\",\n    \"zipCode\" : 3,\n    \"image\" : null\n}"
+        },                
+    {
+            "id": "33033683-e423-41b7-8316-98c1a4111ef5",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/places/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "PUT",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844903,
+            "name": "Update Place",
+            "description": "Updates the Place with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"updated_Name\",\n    \"location\" : { \"type\" : \"Point\", \"coordinates\" : [139.71, 35.65] },\n    \"address\" : \"updated_Address\",\n    \"city\" : \"updated_City\",\n    \"zipCode\" : 3,\n    \"image\" : null\n}"
+        },                
+    {
+            "id": "f88354c1-f087-439c-a73c-125c370027f4",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/places/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "DELETE",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844903,
+            "name": "Delete Place",
+            "description": "Deletes the Place with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "ecf98585-4764-4551-a3bd-f72b706f8935",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/sessionTalks?limit=10",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Query SessionTalk",
+            "description": "Query SessionTalk. Query syntax follows the BaucisJS conventions, see: https://github.com/wprl/baucis/wiki/Query-String-Parameters",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "d0d2cfc4-0da0-4625-96df-142984dcead9",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/sessionTalks",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "POST",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Create SessionTalk",
+            "description": "Creates a new SessionTalk.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": "{\n    \"sessionType\" : \"new_SessionType\",\n    \"name\" : \"new_Name\",\n    \"track\" : 3,\n    \"language\" : \"new_Language\",\n    \"starts\" : \"2016-03-30T18:34:04.919Z\",\n    \"ends\" : \"2016-03-30T18:34:04.919Z\",\n    \"description\" : \"new_Description\"\n}"
+        },                
+    {
+            "id": "1d232be2-027c-4db2-86a7-2fd7d2b89172",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/sessionTalks/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "PUT",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Update SessionTalk",
+            "description": "Updates the SessionTalk with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": "{\n    \"sessionType\" : \"updated_SessionType\",\n    \"name\" : \"updated_Name\",\n    \"track\" : 3,\n    \"language\" : \"updated_Language\",\n    \"starts\" : \"2016-03-30T18:34:04.919Z\",\n    \"ends\" : \"2016-03-30T18:34:04.919Z\",\n    \"description\" : \"updated_Description\"\n}"
+        },                
+    {
+            "id": "3fba6a2d-a5ce-4e8a-998f-a04067d389ca",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/sessionTalks/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "DELETE",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Delete SessionTalk",
+            "description": "Deletes the SessionTalk with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "4359d0b6-7ec0-4342-9041-23dc3469507f",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/speakers?limit=10",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Query Speaker",
+            "description": "Query Speaker. Query syntax follows the BaucisJS conventions, see: https://github.com/wprl/baucis/wiki/Query-String-Parameters",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "bedbb35b-8c9f-4cfa-9a34-92849ae00d0c",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/speakers",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "POST",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Create Speaker",
+            "description": "Creates a new Speaker.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"new_Name\",\n    \"surname\" : \"new_Surname\",\n    \"photo\" : null,\n    \"blog\" : \"new_Blog\",\n    \"twitter\" : \"new_Twitter\",\n    \"linkedin\" : \"new_Linkedin\",\n    \"github\" : \"new_Github\",\n    \"bio\" : \"new_Bio\"\n}"
+        },                
+    {
+            "id": "83f704cd-d60a-481d-b4c5-78627596a7d2",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/speakers/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "PUT",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Update Speaker",
+            "description": "Updates the Speaker with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"updated_Name\",\n    \"surname\" : \"updated_Surname\",\n    \"photo\" : null,\n    \"blog\" : \"updated_Blog\",\n    \"twitter\" : \"updated_Twitter\",\n    \"linkedin\" : \"updated_Linkedin\",\n    \"github\" : \"updated_Github\",\n    \"bio\" : \"updated_Bio\"\n}"
+        },                
+    {
+            "id": "eeed4b81-5d14-46a7-b1c3-ce36c20d4c6f",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/speakers/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "DELETE",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Delete Speaker",
+            "description": "Deletes the Speaker with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "06d8660c-ddc9-4cca-a1c3-e4d7ebfece1b",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/sponsors?limit=10",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Query Sponsor",
+            "description": "Query Sponsor. Query syntax follows the BaucisJS conventions, see: https://github.com/wprl/baucis/wiki/Query-String-Parameters",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "bb864132-700f-49b0-a9e6-1d965e9b7684",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/sponsors",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "POST",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Create Sponsor",
+            "description": "Creates a new Sponsor.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"new_Name\",\n    \"level\" : \"new_Level\",\n    \"logo\" : null\n}"
+        },                
+    {
+            "id": "026d5af7-b50a-4566-b46e-a6452dc1c781",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/sponsors/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "PUT",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Update Sponsor",
+            "description": "Updates the Sponsor with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"updated_Name\",\n    \"level\" : \"updated_Level\",\n    \"logo\" : null\n}"
+        },                
+    {
+            "id": "d6eb2d12-2d54-40bb-a634-bf8bd3752288",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/sponsors/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "DELETE",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1459362844919,
+            "name": "Delete Sponsor",
+            "description": "Deletes the Sponsor with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "602f528d-b5c5-4867-a680-0af28ca48a54",
+            "responses": [],
+            "rawModeData": ""
+        }                 
+    ]    
+}

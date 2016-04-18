@@ -1,0 +1,151 @@
+<img class="adminLogo" src="/images/adminKey.png"/>
+<div class="row row-conf">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<h3 class="text-center" translate="users.title"></h3>
+		<p translate="users.summary"></p>
+		
+		<ul class="nav nav-tabs">
+			<li role="presentation" ng-class="{active : tab==='Users'}"><a ng-click="selectTab('Users')" translate="users.users"></a>
+			</li>
+			<li role="presentation" ng-class="{active : tab==='Providers'}"><a ng-click="selectTab('Providers')" translate="users.providers"></a>
+			</li>
+		</ul>
+		
+		<div ng-show="tab==='Providers'">
+			<br>
+			<div class="row listHeader">
+				<div class="col-md-2 listColumn" translate="users.field.provider"></div>
+				<div class="col-md-2 listColumn" translate="users.field.enable"></div>
+				<div class="col-md-2 listColumn" translate="users.field.autoEnroll"></div>
+				<div class="col-md-2 listColumn" translate="users.field.defaultRole"></div>
+			</div>
+			<ul data-as-sortable="dragControlListeners" data-ng-model="providers" class="sortableList">
+				<li data-ng-repeat="provider in providers" data-as-sortable-item class="borderless">
+					<div data-as-sortable-item-handle>
+						<div class="row">
+							<div class="col-md-2"><span  data-ng-bind="provider.name"></span><span class="color-red" ng-if="!provider.configured">*</span></div>
+							<div class="col-md-2"><input  type="checkbox" ng-change="updateProvider(provider)" ng-disabled="!provider.configured"  ng-model="provider.enable"/></div>
+							<div class="col-md-2"><input  type="checkbox" ng-change="updateProvider(provider)" ng-disabled="!provider.configured || !provider.enable" ng-model="provider.autoEnroll"/></div>
+							<div class="col-md-2">
+								<select class="form-control inlineAccount" ng-model="provider.defaultRole" ng-disabled="!provider.configured || !provider.autoEnroll"
+										ng-options="role.name as role.name for role in roles" ng-change="updateProvider(provider)">
+								</select>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<em ng-if="missingConfig" class="color-red">* Provider(s) not configured, please visit <a href="https://studio.hivepod.io/faq#providers" target="_blank">this link</a> for more details.</em>
+		</div>
+		
+		<div ng-show="tab==='Users'">
+			<br>
+			<div class="row">
+				<div class="col-md-6">
+	
+					<table class="wbTable data-tabe table table-hover table-striped table-condensed">
+						<thead>
+							<th class="md-col-3" translate="users.field.accountType"></th>
+							<th class="md-col-5" translate="users.field.user"></th>
+							<th class="md-col-2" translate="users.field.role"></th>
+							<th class="md-col-2" translate="users.field.lastAccess"></th>
+							<th class="md-col-1" translate="users.field.enabled"></th>
+						</thead>
+						<tbody>
+							<tr class="clickable" ng-repeat="account in accounts">
+								<td ng-click="showDetail(account, $event)">{{account.accountType}}</td>
+								<td ng-click="showDetail(account, $event)">{{account.username}}</td>
+								<td ng-click="showDetail(account, $event)">{{account.role}}</td>
+								<td ng-click="showDetail(account, $event)">{{account.lastAccessOn | date:'yyyy.MM.dd HH:mm'}}</td>
+								<td ng-click="showDetail(account, $event)">{{account.enabled | checkmark}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<button class="btn btn-primary" ng-hide="isDirty" ng-click="newUser()" translate="users.cmd.newUser"></button>
+				</div>
+				<div class="col-md-6 detailPanel">
+					<div ng-show="currentAccount" class="panel panel-default">
+						<div class="panel-heading configTitle">
+							<strong translate="users.userCredentials"></strong>
+							<div class="panel-buttons-r">
+								<button class="btn btn-warning" ng-click="deleteUser(currentAccount)"><span class="glyphicon glyphicon-remove color-red" tooltip="Detail"></span> <span translate="cmd.delete"></span></button>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div>
+								<label class="labelForm" translate="users.field.accountType"></label>
+								<select class="form-control inlineAccount" ng-model="currentAccount.accountType" 
+										ng-options="provider.name as provider.name for provider in providersWithLocal" ng-change="setDirty()">
+								</select>
+							</div>
+							<label class="labelForm" translate="users.field.username"></label>
+							<input type="text" class="form-control inlineAccount" ng-model="currentAccount.username" ng-change="setDirty()"/><br/>
+							<div ng-show="currentAccount.accountType == 'Local'">
+								<div class="row">
+									<div class="col-md-12">
+										<button class="btn btn-default pull-right" 
+												ng-click="changePassword()"
+												ng-show="showChangePasswordButton" translate="users.cmd.changePassword">Change password
+										</button>
+										<button class="btn btn-default pull-right" 
+												ng-click="undoChangePassword()"
+												ng-show="canUndoChangePassword" translate="users.cmd.undoChangePassword">Cancel password change
+										</button>
+									</div>
+								</div>
+							
+								<div class="row" ng-show="canTypePassword">
+									<div class="col-md-12">
+										<label class="labelForm" translate="users.field.password"></label>  
+										<input type="text" class="form-control inlinePassword" ng-model="currentAccount.newPassword" ng-change="setDirty()"/>
+										<button class="btn btn-default" ng-click="newPassword(currentAccount)" translate="users.cmd.random"></button>
+										<br/>
+									</div>
+								</div>
+							</div>
+	
+							<label class="labelForm" translate="users.field.role"></label>
+							<select class="form-control inlineAccount" ng-model="currentAccount.role" 
+									ng-options="role.name as role.name for role in roles" ng-change="setDirty()"/>
+							</select>
+	
+							<div ng-show="!isAdding()">
+								<label class="labelForm" translate="users.field.createdAt"></label>
+								<input type="text" class="form-control inlineAccount" ng-value="currentAccount.createdAt | date:'yyyy.MM.dd HH:mm'" readonly/>
+								<br/>
+	
+	
+								<label class="labelForm" translate="users.field.lastAccess"></label>  
+								<input type="text" class="form-control inlineAccount" ng-value="currentAccount.lastAccessOn | date:'yyyy.MM.dd HH:mm'" readonly/>
+								<br/>
+							</div>
+	
+							<label class="labelForm" for="checkEnabled">
+							</label> 
+							<label>
+								<input id="checkEnabled" type="checkbox" class="" 
+									ng-click="setEnable(currentAccount, !currentAccount.enabled)"
+									ng-model="currentAccount.enabled"/>
+								<span class="normalLabel" ng-show="currentAccount.enabled" translate="label.enabled"></span>
+								<span class="normalLabel" ng-show="!currentAccount.enabled" translate="label.disabled"></span>
+							</label>
+	
+							<br/>
+	
+							<label class="labelForm" translate="users.field.description"></label>  
+							<textarea rows="3" class="form-control inlineDesc" ng-change="setDirty()" ng-model="currentAccount.description"></textarea>
+							<br/>
+						</div>
+						<div class="panel-footer configFooter">
+							<div class="panel-buttons-r">
+								<button class="btn btn-default" ng-show="isDirty" ng-click="cancelEdit()" translate="cmd.cancel"></button>
+								<button class="btn btn-primary" ng-show="isDirty" ng-click="updateUser(currentAccount)" translate="cmd.applyChanges"></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

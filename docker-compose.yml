@@ -1,0 +1,25 @@
+db:
+  image: mongo:3.2
+  ports:
+  - "27017"  
+
+app:
+  build: .
+  environment:
+    NODE_ENV: production
+    PORT: 80
+    SERVICE_NAME: app
+  links:
+  - "db:DB"
+  ports:
+  - "80"
+
+lb:
+  image: jasonwyatt/nginx-loadbalancer
+  links:
+  - app
+  environment:
+    APP_PATH: "/"
+    SRC_APP_PATH: "/src"
+  ports:
+  - "80:80"

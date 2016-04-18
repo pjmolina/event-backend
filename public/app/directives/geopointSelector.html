@@ -1,0 +1,59 @@
+<div class="input-group geopoint-selector">
+	<input id="input01" 
+		   type="number" 
+		   class="form-control geopoint-input-field" 
+	       tooltip="Latitude" 
+	       min="-90"
+	       max="90"
+	       ng-model="location.coordinates[1]"
+           ng-required="required"
+	       ng-disabled="readonly"
+	       />
+	<input id="input02" 
+		   type="number" 
+		   class="form-control geopoint-input-field" 
+	       tooltip="Longitude" 
+	       min="-180"
+	       max="180"
+	       ng-model="location.coordinates[0]"
+           ng-required="required"
+	       ng-disabled="readonly"
+	       />	       
+	<span class="input-group-btn">
+		<button type="button" class="btn btn-default inline-ico" 
+		        ng-click="openMap($event)" 
+		        >
+			<i class="glyphicon glyphicon-map-marker"></i>
+		</button>
+	</span>
+
+  <script type="text/ng-template" id="mapModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title" ng-show="canSelect"
+                translate="map.selector.select.title"></h3>
+            <h3 class="modal-title" ng-show="!canSelect"
+                translate="map.selector.position.title"></h3>
+            <input class="address-map-field" type="text" ng-model="address" ng-change="onType()" 
+            	   ng-show="canSelect"
+            	   ng-model-options="{debounce: {default: '300' }}"
+            	> 
+            <span>{{ formattedAddress }}</span>
+            <span>{{ marker.position }}</span>
+        </div>
+        <div class="modal-body google-map-modal">
+        	<map class="google-map" 
+        	     center="34, -10" 
+        	     zoom="{{map.zoom}}"
+        		 on-click="mapSelect()"> 
+        		 <marker position="34, -10" draggable="true">
+        		 </marker> 
+			</map>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="select()" ng-show="canSelect" translate="cmd.select"></button>
+            <button class="btn btn-warning" ng-click="cancel()" ng-show="canSelect" translate="cmd.cancel"></button>
+            <button class="btn btn-warning" ng-click="close()" ng-show="!canSelect" translate="cmd.close"></button>
+        </div>
+    </script>
+
+</div>

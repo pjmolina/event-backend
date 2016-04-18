@@ -1,0 +1,8 @@
+<div class="btn-group tristate">
+	<a class="btn btn-default" ng-class="{true: 'btn-info'} [ngModel==true]" ng-click="toggle(true)" 
+	   ng-disabled="readonly" tooltip="{{yesLabel}}"><span class="glyphicon glyphicon-ok color-green"></span></a>
+	<a class="btn btn-default" ng-class="{true: 'btn-info'} [ngModel==null]" ng-click="toggle(null)" 
+	   ng-disabled="readonly" tooltip="{{nullLabel}}" ng-hide="hideNullButton"><span class="glyphicon glyphicon-minus color-dark-grey"></span></a>
+	<a class="btn btn-default" ng-class="{true: 'btn-info'}  [ngModel==false]" ng-click="toggle(false)" 
+	   ng-disabled="readonly" tooltip="{{noLabel}}"><span class="glyphicon glyphicon-remove color-red"></span></a>
+</div>

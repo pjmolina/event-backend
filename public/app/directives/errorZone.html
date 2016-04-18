@@ -1,0 +1,7 @@
+<div class="alert alert-danger" role="alert" ng-show="errors" ng-cloak>
+	<strong ng-show="errors.length == 1" translate="errorzone.error"></strong>
+	<strong ng-show="errors.length > 1" translate="errorzone.errors"></strong>
+	<ul>
+		<li ng-repeat="error in errors">{{error | translate}}</li>
+	</ul>
+</div>

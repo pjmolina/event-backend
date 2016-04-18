@@ -1,0 +1,17 @@
+{
+	"env": {
+		"node": true,
+		"browser": false
+	},
+	"rules": {
+		"ident": [0, 4],
+		"semi": [ 2, "always"],
+		"quotes": [0, "single"],
+ 		"linebreak-style": [0, "unix"],
+		"no-unused-vars": [2, { "args": "none" }],
+
+		"no-mixed-spaces-and-tabs": 0,
+		"no-console": 0
+	},
+	"extends": "eslint:recommended"
+}

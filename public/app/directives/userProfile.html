@@ -1,0 +1,14 @@
+<div class="user-profile">
+	<div ng-show="session.id">
+		<div class="user-profile-name">{{session.id}}</div>
+		<div class="user-profile-divider" translate="userprofile.divider"></div>
+		<div class="user-profile-role">{{session.role}}</div>
+		<div class="user-profile-divider" translate="userprofile.divider"></div>
+		<div class="user-profile-action">
+			<a ng-click="logout()" translate="cmd.logout" ng-show="logoutCallback" class="inverse"></a>
+		</div>
+	</div>
+	<div ng-show="!session.id" class="user-profile-action">
+		<a ng-click="login()" translate="cmd.login" ng-show="loginCallback" class="inverse"></a>
+	</div>
+</div>

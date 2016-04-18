@@ -1,0 +1,820 @@
+@font-face{
+    font-family: 'Fira Sans';
+    src: local('Fira Sans Regular'),
+    	 url('/fonts/FiraSans-Regular.eot')  format('embedded-opentype'),
+         url('/fonts/FiraSans-Regular.woff') format('woff'),
+         url('/fonts/fira-sans.woff2')     format('woff2'),
+         url('/fonts/FiraSans-Regular.ttf')  format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+	font-family: "Fira Sans", "Helvetica", "Lucida Grande", sans-serif;
+	text-rendering: optimizeLegibility;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+#wrapper {
+	min-height: 100%;
+	position: relative;
+}
+#header {
+	padding: 0px;
+	padding-left: 2.2em;
+	background-color: #5689B5;
+}
+.nav-inverse {
+	background-color: #5689B5;    
+}
+.nav-tabs {
+    border-bottom: none;
+}
+
+#content {
+	margin: 0px;
+	padding-top: 0px;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-bottom: 60px;   /* = Height of the footer element */
+}
+#footer {
+	position: absolute;
+	width: 100%;
+	height: 60px;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+    color: #666;
+    border-top: 3px solid #6E96B9;
+}
+#caption {
+	border: none;
+	margin-bottom: 3px;
+}
+
+/* angular-loading-bar*/
+#loading-bar .bar {
+	background: #dde9ff;
+}
+#loading-bar .peg {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: .45;
+  -moz-box-shadow: #dde9ff 1px 0 6px 1px;
+  -ms-box-shadow: #dde9ff 1px 0 6px 1px;
+  -webkit-box-shadow: #dde9ff 1px 0 6px 1px;
+  box-shadow: #dde9ff 1px 0 6px 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+#loading-bar-spinner .spinner-icon {
+  width: 14px;
+  height: 14px;
+
+  border:  solid 2px transparent;
+  border-top-color:  #dde9ff;
+  border-left-color: #dde9ff;
+  border-radius: 50%;
+
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+  -moz-animation:    loading-bar-spinner 400ms linear infinite;
+  -ms-animation:     loading-bar-spinner 400ms linear infinite;
+  -o-animation:      loading-bar-spinner 400ms linear infinite;
+  animation:         loading-bar-spinner 400ms linear infinite;
+}
+/* angular-loading-bar*/
+
+footer {
+	margin: 0em;
+	margin-top: 2em;
+	background-color: #222;
+	color: white;
+	padding: .8em .8em .8em .8em;
+}
+
+h1 {
+}
+h2 {
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-weight: bold;
+}
+a.inverse,
+a.inverse:hover {
+    color: #fff;
+}
+a {
+	cursor: pointer;
+}
+.clickable {
+	cursor: pointer;	
+}
+tr.clickable.active1, tr.clickable.active1>td {
+	background-color: #F5DD8C;
+}
+.iconBig {
+	font-size: 1.5em;
+	vertical-align: bottom;
+}
+.containerRow {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.content {
+	background-color: white;
+	margin-bottom: 3em;
+}
+.mainMenu {
+	font-size: 1.2em;
+	color: #fff;
+}
+.entryMenu {
+	font-size: 1.4em;
+}
+.error {
+	color: #c00;
+	margin-top: .5em;
+	margin-bottom: 1em;
+}
+.success {
+	color: #0c0;
+}
+.dropZone {
+	border: 2px dashed #666;
+	height: 3em;
+	padding: .7em 1em .7em 1em;
+	text-align: center;
+}
+.dropZone.selected {
+	border: 2px solid #555;
+	background-color: #ccf;
+}
+.content {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.commandBar {
+	margin-top: 3em;
+	margin-bottom: 2em;
+}
+.monospaced {
+	font-family: Consolas, Incosolata, "Courier New", Curier, monospaced;
+}
+tr > td.previewCell {
+	border: 1px solid #eef;
+	font-size: 0.85em;
+	padding-left: .4em;
+	padding-right: .2em;	
+	max-width: 10em;
+	min-width: 2em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+table.importPreview {
+	min-width: 100%;
+	margin-top: 1.5em;
+}
+table.importPreview > thead > tr > th,
+table.importPreview > tbody > tr > td {
+	border: 1px solid #eee;
+	padding-left: .4em;
+	padding-right: .2em;	
+}
+table.importPreview > thead > tr > th {
+	background-color: #eee;
+	border: 1px solid #eee;
+	font-weight: normal;
+	font-size: .85em;
+	padding-left: .4em;
+	padding-right: .2em;		
+}
+table.importPreview > thead > tr > th.binded {
+	background-color: #eef;
+	border: 1px solid #eef;
+}
+table.importPreview > thead > tr > th.unbinded {
+	background-color: #eee;
+	border: 1px solid #eee;
+}
+.bindedProp{
+	margin-left: 0.8em;
+	background-color: #eef;
+	color: #000;
+	font-weight: bold;
+	font-family: Consolas, "Courier New", Curier, monospaced;
+	padding: 0px 5px 0px 5px;
+	border-radius: 2px;
+}
+.missingProp{
+	margin-left: 0.8em;
+	background-color: #fcc;
+	color: #c00000;
+	font-weight: bold;
+	font-family: Consolas, "Courier New", Curier, monospaced;
+	padding: 0px 5px 0px 5px;
+	border-radius: 2px;
+}
+.ignoredProp{
+	margin-left: 0.8em;
+	background-color: #eee;
+	color: #222;
+	font-weight: bold;
+	font-family: Consolas, "Courier New", Curier, monospaced;
+	padding: 0px 5px 0px 5px;
+	border-radius: 2px;
+}
+
+.candidateHeader {
+	background-color: #eef;
+}
+.candidateData {
+	background-color: #fff;
+}
+.candidateSkip{
+	background-color: #fff;
+}
+.cursor-pointer {
+	cursor: pointer; cursor: hand;
+}
+.importTab {
+}
+.tab-content {
+	padding-top: 2em;
+}
+.importTab {
+}
+.tab-content {
+	padding-top: 2em;
+}
+.r-align {
+	text-align: right;
+}
+.l-align {
+	text-align: left;
+}
+.c-align {
+	text-align: center;
+}
+.x2 {
+	font-size: 2em;
+}
+.identifiedColHeader {
+	width: 11em;
+	display: inline-block;
+}
+div.commandBar > div > button.btn {
+	margin-right: .5em;
+}
+.loader {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+#itemList {
+	font-size: .9em;
+}
+
+tr > td.data {
+	padding-left: .4em;
+	padding-right: .2em;	
+	max-width: 10em;
+	min-width: 2em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.upperTableZone {
+	margin-bottom: 1em;
+}
+.searchZone {
+	margin-left: 3em;
+	display: inline;
+}
+
+.foundZone {
+	text-align: left;
+	display: inline;
+	margin-left: 1em;
+}
+.inline-ico {
+	position: relative;
+	left: -1px;	
+	height: 34px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+.htmlEditor {
+	min-width: 51em;
+	margin-bottom: 1em;
+}
+div.htmlEditor > div:nth-child(2) {
+	min-height: 6em;
+	height: inherit;
+	width: 100%;
+}
+div.htmlEditor > div > div:focus {
+	outline-style: none;
+}
+div.htmlEditor > textarea {
+	min-height: 10em;
+	height: inherit;
+}
+.htmlPreview {
+	min-width: 30em;
+	margin-bottom: 1em;	
+	border: 1px solid #aaa;
+	padding: 0.5em; 
+}
+.htmlCellDisplay {
+}
+
+.searchZone {
+	margin-left: 0em;
+	margin-right: 0em;
+	display: inline;
+}
+#searchTextbox {
+	min-width: 15em;	
+	width: 75%;
+	padding-left: .5em;
+}
+
+.foundZone {
+	text-align: left;
+	display: inline;
+	margin-left: 1em;
+}
+.searchIndicators {
+	position: relative;
+	left: -1.5em;
+	z-index: 1;
+	display: inline-block;
+}
+.inline-table {
+	display: inline-table;
+}
+#itemList > thead > tr > th {
+	cursor: pointer; cursor: hand;
+}
+.table {
+	margin-bottom: 0px;
+}
+/* Validation -----*/
+input.ng-valid {
+}
+input.ng-invalid {
+	border: 1px solid #fc0;
+	background:  #fff url(/images/invalid-icon.png) no-repeat 90% center;
+}
+input.ng-valid-required {
+}
+input.ng-invalid.ng-invalid-required {
+	background-color: #fff;
+	background: #fff url(/images/required-icon.png) no-repeat;
+	background-position: right 30px top 10px;
+}
+select.ng-invalid-required {
+	border: 1px solid #fc0;
+}
+select.ng-valid-required {
+}
+
+/*  Form inline ------------------------------- */ 
+.acc-buttons {
+	margin-bottom: 1em;
+}
+form.form-inline > fieldset > div.row > div.form-group {
+	margin-bottom: 1em;
+}
+form.form-inline > fieldset > div.row > div.form-group > label {
+	padding-right: .5em;
+	font-weight: bold;
+	min-width: 6em;
+}
+form.form-inline > fieldset >  div.row > div.form-group > input {
+}
+form.form-inline > fieldset > div.checkbox {
+	padding-left: 0em;
+	padding-right: 1em;
+	height: 34px;
+}
+div.checkbox {
+	padding-left: 1em;
+    margin-bottom: 2em;
+    padding-top: 2em;
+    padding-bottom: .6em;	
+}
+div.checkbox > span {
+	padding-left: 1em;
+}
+label.checkbox {
+	font-weight: bold;
+	padding-left: 1em;
+}
+
+/* Format date / time / datetime selectors ---------------------------- */
+table[timepicker] > tbody > tr > td.form-group > input.form-control {
+	width: 44px;
+	margin-left: 2px;
+}
+div.input-group.timeSelector ,
+div.input-group.dateSelector {
+	width: 13em;
+}
+div.input-group.datetimeSelector {
+	width: 16em;
+}
+div.input-group.dateSelector > input.ng-invalid,
+div.input-group.timeSelector > input.ng-invalid,
+div.input-group.datetimeSelector > input.ng-invalid {
+	border: 1px solid #fa0;
+}
+ul.datetime-picker-dropdown {
+	min-width: 18.3em;
+}
+
+/*  admin section-----  */
+.toolbar2 {
+	margin-right: 0;
+	margin-left: 0;
+	background-color: #fff;
+	border-color: #ddd;
+	border-width: 1px;
+	border-radius: 4px 4px 0 0;
+	box-shadow: none;
+}
+
+.btn-toolbar {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;	
+}
+
+.btn.btn-tb {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;	
+}
+.btn.btn-tb:hover {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #ccc;	
+}
+.btn.btn-tb:focus {
+	color: #333;
+	background-color: #e6e6ff;
+	border-color: #ccc;	
+}
+
+.btn.btn-tb.active,
+.btn.btn-tb:active {
+	color: #333;
+	background-color: #e6e6ff;
+	border-color: #ccc;	
+}
+
+
+.form-control.whCombobox2 {
+	margin-left: .5em;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	width: 8em;
+	font-family: Consolas, Incosolata, monospace;
+	display: inline-block;
+	padding: 3px;
+}
+
+.form-control.whCombobox {
+	margin-left: .5em;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	width: 6em;
+	font-family: Consolas, Incosolata, monospace;
+	display: inline-block;
+	padding: 3px;
+}
+
+.form-control.whUrl {
+	margin-left: .5em;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	max-width: 53em;
+	min-width: 10em;
+	font-family: Consolas, Incosolata, monospace;	
+	display: inline-block;
+}
+.wh-template-selector {
+	min-width: 10em;
+	max-width: 33em;
+	display: inline;
+	margin-left: 1em;
+}
+.wh-label1 {
+	width: 7em;
+	display: inline-block;
+}
+.wbTable {
+	width: 100%;
+}
+.monospaced {
+	font-family: Consolas, Incosolata, monospace;	
+}
+
+.whEnable {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 3em;	 
+	margin-bottom: 2em;
+}
+.panel-heading.configTitle {
+	background-image: linear-gradient(to bottom,#f5f5ff 0,#e8e8f5 100%);
+	padding-right: 4px;
+}
+
+.panel-footer.configFooter {
+	height: 42px;
+	padding-right: 4px;
+}
+
+.panel-buttons-r {
+	float: right;
+	margin-top: -7px;
+}
+
+.editor-legend {
+	margin-top: 12px;
+	margin-bottom: 0px;
+	padding-bottom: 3px; 
+}
+
+.row-conf {
+	border-left: 5px solid #ffcc00;
+	padding-bottom: 2em;
+}
+
+.detailPanel {
+	margin-top: 28px;
+	margin-bottom: 18px;
+}
+
+.labelForm {
+	width: 10em;
+}
+
+.inlineAccount {
+	display: inline-block;
+	width: 17em;
+	margin-bottom: 6px;
+}
+.inlinePassword {
+	display: inline-block;
+	width: 17em;
+	margin-bottom: 6px;
+	font-family: monospace;
+}
+.inlineDesc {
+	width: 100%;
+	height: 5em;
+	margin-bottom: 6px;
+
+}
+
+.normalLabel {
+	font-weight: normal;
+}
+
+.adminLogo {
+	margin-left: 4px;
+    float: left;
+    margin-top: 17px;
+    margin-right: 60px;
+}
+.color-red {
+	color: #c00;
+}
+.color-green {
+	color: #080;
+}
+.color-dark-grey {
+	color: #333;
+}
+
+.admin-logo {
+    width: 2em;	
+ 	margin-right: 1em;	
+}
+.margin403 {
+	margin-top: 5em;
+	margin-bottom: 5em;
+}
+.user-profile-tools {
+	position: absolute;
+	top: .8em;
+	right: 0em;
+	display: inline-block;
+}
+.language-selector {
+	display: inline-block;
+	margin-right: 1em;
+}
+.user-profile {
+	display: inline-block;
+	float: right;
+	margin-right: 2em;
+	color: #fff;
+	font-size: .9em;
+	margin-top: .2em;
+}
+.user-profile-name, 
+.user-profile-divider,
+.user-profile-action,
+.user-profile-role  {
+	display: inline-block;
+}
+.web-parameters {
+	margin-top: .5em;
+	margin-bottom: .5em;
+	margin-left: 3em;
+}
+.btn-add-parameter {
+	margin-left: 3em;
+}
+.paramType-combobox {
+	width: 14em;
+	display: inline-block;
+}
+.contentType-combobox {
+	width: 22em;
+	display: inline-block;
+}
+.paramType {
+	width: 14em;
+	display: inline-block;
+	font-family: monospace;
+}
+.geopoint-selector > input.form-control.geopoint-input-field {
+	width: 5.1em;
+	padding-left: 6px;
+	padding-right: 3px;
+}
+.modal-body.google-map-modal {
+	margin: 0px;
+	padding: 0px;
+}
+.google-map {
+	width: 100%;
+	height: 450px;
+}
+.address-map-field {
+	width: 40%;
+	margin-right: 2em;
+}
+.imageSelector-image {
+	margin-top: 3px;
+	margin-bottom: 3px;
+	min-height: 34px;
+}
+.imageSelector > imageSelector-delete {
+	margin-left: 8px;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+	border-top: none;
+}
+.truncate {
+	width: 40em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#caption>tbody>tr>td {
+	vertical-align: baseline;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.widthLabel {
+	width: 10em;
+}
+
+.tristate-permissions>a {
+	font-size: .7em;
+}
+.permissions-cbo {
+	min-width: 10em; 
+	margin-left: 1em;
+	margin-right: 1em;
+	padding: 3px;
+}
+.permissions-btn-descripion {
+	padding-bottom: 1em;
+    display: inline-block;
+    vertical-align: top;	
+}
+
+.invalidRequired {
+	color: red;
+	background: #fff url(/images/required-icon.png) no-repeat;
+	background-position: right 250px top 0px;
+}
+
+/* sortable list */
+.sortableList {
+	padding: 0px;
+}
+.listColumn {
+	font-weight: bold;
+}
+.listHeader {
+	border:  solid 2px transparent;
+  	border-bottom-color:  lightgray;
+	margin-bottom: 10px;
+}
+
+.providers-div {
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.borderless {
+	border: none;
+}
+.select-link {
+	margin-right :10px;	
+}
+
+
+/* Mobile versions */
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px) {
+
+	body {
+		font-size: 12px;
+	}
+	.user-profile {
+		margin-top: 4px;
+	    margin-right: 2px;
+	}
+	#content {
+		padding: 0px 15px 0px 5px;
+	}
+	#footer {
+		visibility:  hidden;
+	}
+	#caption>tbody>tr>td {
+		padding: 4px;
+		line-height: 1.2;
+	}
+	.searchZone {
+		width: 100%;	
+	}
+	#searchTextbox {
+		width: 50%;
+	    margin-top: 3px;
+	}
+	.foundZone {
+		width: 100%;	
+		margin-left: 0em;	
+	}
+	.acc-buttons {
+		margin-left: 0px;
+		margin-right: 0px;	
+	}
+	.language-selector {
+	    position: absolute;
+	    right: 0px;
+	    top: 37px;
+	    z-index: 1;
+	}
+	.pagination {
+		margin: 5px 0px 5px 0px;
+		font-size: 10px; 
+	}
+}
+
+/* Tablet versions */
+@media only screen 
+  and (min-device-width: 481px) 
+  and (max-device-width: 720px) {
+
+	#footer {
+		visibility:  visible;
+	}
+}

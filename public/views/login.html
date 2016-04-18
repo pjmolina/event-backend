@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="loginForm">
+			<h3 class="text-center" translate="view.login.Login"></h3>
+			<fieldset>
+				<div class="form-group">
+					<label for="user" translate="view.login.User"></label>
+					<input id="user" type="text" class="form-control" 
+						   placeholder="{{'view.login.User' | translate}}" 
+						   ng-model="credentials.username" 
+						   autofocus required/>
+				</div>
+				<div class="form-group">
+					<label for="password" translate="view.login.Password"></label>
+					<input id="password" type="password" class="form-control" 
+						   placeholder="{{'view.login.Password' | translate}}" 
+						   ng-model="credentials.password" 
+						   autofocus required/>
+				</div>
+			</fieldset>
+			<div class="error text-center" data-ng-show="errorMessage">{{errorMessage | translate}}</div>
+			<button id="login" class="btn btn-primary" ng-click="login($event)" translate="view.login.btn.Login"></button>	
+		</form>
+		<br/>
+		<div ng-show="showProviders">
+			<p>Social login:</p>
+			<div ng-repeat="provider in providers" class="providers-div inline">
+				<a id="login{{provider.name | lowercase}}" ng-href="/oauth2/{{provider.name | lowercase}}" class="btn btn-info loginButton">
+					<img ng-src="/images/connect-{{provider.name | lowercase}}.png"/> 
+				</a>
+			</div>
+		</div>
+		<br/>
+	</div>
+	<div class="col-md-4"></div>
+</div>

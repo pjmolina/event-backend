@@ -1,0 +1,18 @@
+<div class="fileSelector">
+	<input id="inputFile"
+		   ng-required="{{required}}" 
+		   type="file" accept="accept"
+		   ng-show="canAddFile">
+	<img ng-show="{{required}}" src="/images/required-icon.png"/>
+	<a class = "fileSelector-show"
+	   ng-show="showFile && property" 
+	   href="{{property | file}}" 
+	   target="_blank"><span class="fileSelector-image">{{property | file}}</span>
+	</a>
+ 	<a ng-click="delete()"
+	   class = "fileSelector-delete"
+	   tooltip="{{'fileSelector.delete.tooltip' | translate }}" 
+	   ng-show="canDeleteFile && property">
+		 <span class="glyphicon glyphicon-remove color-red"></span>
+	</a>
+</div>

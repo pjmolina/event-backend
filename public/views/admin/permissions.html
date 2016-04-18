@@ -1,0 +1,218 @@
+<img class="adminLogo" src="/images/adminPermissions.png"/>
+<div class="row row-conf">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<h3 class="text-center" translate="permissions.title"></h3>
+		<p translate="permissions.summary"></p>
+
+		<error-zone ng-model="error">
+		</error-zone>
+		
+		<div ng-show="validationErrors" class="panel panel-danger">
+			<div class="panel-heading" translate="permissions.validationErrors">
+			</div>
+			<div class="panel-body" ng-bind-html="validationErrors">
+			</div>
+		</div>
+		
+		<ul class="nav nav-tabs">
+			<li role="presentation" ng-class="{active : tab==='Roles'}"><a ng-click="selectTab('Roles')" translate="permissions.tabTitle.roles"></a>
+			</li>
+			<li role="presentation" ng-class="{active : tab==='Permissions'}"><a ng-click="selectTab('Permissions')" translate="permissions.tabTitle.permissions"></a>
+			</li>
+			<li role="presentation" ng-class="{active : tab==='ExportImport'}"><a ng-click="selectTab('ExportImport')" translate="permissions.tabTitle.exportImportSecurity"></a>
+			</li>
+		</ul>
+
+		<div ng-show="tab==='Roles'">
+			<div class="row">
+				<div class="col-md-12">
+					<br/>
+					<p translate="permissions.tab.roleInfo">
+						
+					</p>
+				</div>
+			</div>			
+			<div class="row">
+				<div class="col-md-6">
+					<table class="wbTable data-tabe table table-hover table-condensed">
+						<thead>
+							<th class="col-md-11" translate="permissions.role"></th>
+							<th class="col-md-1"></th>
+						</thead>
+						<tbody>
+							<tr class="clickable" ng-class="{active1: role.selected}" ng-repeat="role in roles">
+								<td ng-click="selectRole(role, $event)">{{role.name}}</td>
+								<td>
+									<a ng-show="canDeleteRole(role)"
+									ng-click="deleteRole(role)">
+										<span class="glyphicon glyphicon-remove color-red" tooltip="Delete"></span>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+				<div class="col-md-6">
+					<br/>
+					<br/>
+					<input type="text" ng-model="newRoleName" placeholder="new role" ng-change="onNewRoleInput(newRoleName)"/>
+					<button ng-disabled="!canAddNewRole" class="btn btn-primary" ng-click="newRole(newRoleName)" translate="permissions.cmd.newRole"></button>
+
+				</div>
+			</div>
+			
+		</div>
+		
+				
+		<div ng-show="tab==='Permissions'" class="row">
+			<div class="col-md-12">
+				<br/>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<span translate="permissions.infoPermissionsFor"></span> 
+						<span translate="permissions.infoRole"></span>
+						<select class="permissions-cbo"
+						        ng-model="currentRole" 
+								ng-options="role as role.name for role in roles"
+								ng-change="selectRole(currentRole)">
+						</select>
+						
+						<span translate="permissions.andResource"></span>
+						<select class="permissions-cbo"
+								ng-model="currentResource" 
+								ng-options="resource as resource.name for resource in resources"
+								ng-change="selectResource(currentResource)">
+						</select>
+						<button class="pull-rigth" ng-click="saveCurrentPermission()"
+						        translate="permissions.apply">
+						</button>
+					</div>				
+				</div>				
+			</div>
+			
+			<div class="col-md-12" ng-hide="currentPermission.title">
+				<h4 translate="permissions.permissions"> 
+				</h4>
+				<span translate="permissions.selectPermission"></span>
+			</div>
+			<div class="col-md-12" ng-show="currentPermission.title">
+				<h4> 
+					<span translate="permissions.permissionsFor">Permissions for</span>
+					<span> {{currentPermission.title}}</span>
+				</h4>
+				
+				<div class="row">
+					<div class="col-md-12">
+						<label  translate="permissions.horizontalSecurity">Horizontal Data Security Profile: </label>
+						<select id="hsec"
+								class="permissions-cbo"
+						        ng-model="currentPermission.horizontalSecurity"
+								ng-options="hsec as hsec.label for hsec in horizontalSecurityRules">	
+						</select>
+						<span>{{currentPermission.horizontalSecurity.description}}</span>
+					</div>
+				</div>
+				<br/>
+
+				<div class="row">
+					<div class="col-md-6">
+						<label class="pull-left" translate="permissions.operations">Operations</label>
+						<div class="pull-right">
+							<span translate="permissions.canExecute">Can Execute:</span> 
+							<a ng-click="selectAllOperations()" translate="permissions.all">All</a> |
+							<a ng-click="selectNoneOperations()" translate="permissions.none">None</a>
+						</div>
+						<table class="wbTable data-tabe table table-hover table-striped table-condensed">
+							<thead>
+								<th class="md-col-9" class="md-col-5"></th>
+								<th class="col-md-3"></th>
+							</thead>
+							<tbody>
+								<tr class="clickable" ng-repeat="op in currentPermission.operations">
+									<td>{{op.name}}</td>
+									<td>
+										<tristate ng-model="op.selected" 
+												class="tristate-permissions pull-right"
+												hide-null-button="true">
+										</tristate>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+	
+					<div class="col-md-6">
+						<label class="pull-left" translate="permissions.fields">Field visibility</label>
+						<div class="pull-right">
+							<span translate="permissions.canView">Can View:</span> 
+							<a ng-click="selectAllFields()" translate="permissions.all">All</a> |
+							<a ng-click="selectNoneFields()" translate="permissions.none">None</a>
+						</div>
+		
+						<table class="wbTable data-tabe table table-hover table-striped table-condensed">
+							<thead>
+								<th class="md-col-9"></th>
+								<th class="col-md-3"></th>
+							</thead>
+							<tbody>
+								<tr class="clickable" ng-repeat="field in currentPermission.fields">
+									<td>{{field.name}}</td>
+									<td>
+										<tristate ng-model="field.selected" 
+												class="tristate-permissions pull-right"
+												hide-null-button="true">
+										</tristate>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div ng-show="tab==='ExportImport'">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 translate="permissions.title.SecuritySettings">Security Settings Import/Export</h3>
+					<br/>
+					<p>
+						<h4 translate="permissions.export">Export</h4>
+						<span class="permissions-btn-descripion"
+						      translate="permissions.export.description">
+							Export all the security settings (roles and permissions) into a JSON file. 
+						</span>
+						<br/>
+						<button class="btn btn-primary" ng-click="export()" translate="permissions.export">Export</button>
+					</p>
+					<br/>
+					<p>
+						<h4 translate="permissions.import">Import</h4>
+						<span class="permissions-btn-descripion"
+						      translate="permissions.import.description">
+								Import security settings from a JSON file. 
+								<strong>Warning:</strong> 
+								this operations overrides current security settings (roles and permissions).
+						</span>
+						<br/>
+						<br/>
+						
+						<file-selector class="" ng-model="importFile" accept="application/json">
+						</file-selector>
+
+						<br/>
+						<button class="btn btn-danger" ng-disabled="!importFile" ng-click="import()"
+						        translate="permissions.import">Import</button>
+					</p>
+					<div ng-show="importResult" class="panel panel-info">
+						<div class="panel-heading" ng-bind-html="importResult">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

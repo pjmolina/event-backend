@@ -1,0 +1,89 @@
+<div class="row">
+	<div class="col-md-12">
+	
+		<table id="caption" class="table">
+			<tr>
+				<td class="text-left">
+				</td>
+				<td class="text-center">
+					<h3 translate="label.class.select.place"></h3>
+				</td>
+				<td class="text-right">
+				  <a class="iconBig" href ng-click="refresh()"><span class="glyphicon glyphicon-refresh"></span></a>
+				</td>
+			</tr>
+		</table>
+
+		<div class="upperTableZone row">
+			<search-tool class="col-md-12"
+						 ng-model="searchContext"
+						 search="refresh">
+			</search-tool>
+		</div>
+
+		<table id="itemList" class="table data-table table-hover table-striped table-condensed" ng-show="dataReceived">
+			<thead>
+				<th>
+				</th>				
+				<th ng-click="sortBy('name')">Name<sort-column ng-model="searchContext.sort.name"></sort-column></th>
+				<th ng-click="sortBy('location')">Location<sort-column ng-model="searchContext.sort.location"></sort-column></th>
+				<th ng-click="sortBy('address')">Address<sort-column ng-model="searchContext.sort.address"></sort-column></th>
+				<th ng-click="sortBy('city')">City<sort-column ng-model="searchContext.sort.city"></sort-column></th>
+				<th ng-click="sortBy('zipCode')">ZipCode<sort-column ng-model="searchContext.sort.zipCode"></sort-column></th>
+				<th ng-click="sortBy('image')">Image<sort-column ng-model="searchContext.sort.image"></sort-column></th>
+				
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="place in dataList">
+					<td>
+						<a href ng-click="select(place, $event)">
+							<span class="glyphicon glyphicon-search" tooltip="Select">
+						</a>
+					</td>
+					<td class="data">{{place.name}}</td>
+					<td class="data">{{place.location | geopoint:3}}</td>
+					<td class="data">{{place.address}}</td>
+					<td class="data">{{place.city}}</td>
+					<td class="data">{{place.zipCode | number:0}}</td>
+					<td class="data"><a href="{{place.image}}"><img ng-src="{{place.image}}" width="30"/></a></td>
+					<td>
+						<a href ng-click="select(place, $event)">
+							<span class="glyphicon glyphicon-search" tooltip="Select">
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>			
+		
+		<div ng-show="dataReceived" class="text-center">
+			<div>
+				<pagination max-size="5" 
+							boundary-links="true" 
+				            total-items="searchContext.totalItems" 
+				            items-per-page="searchContext.pageSize" 
+				            ng-model="searchContext.currentPage" 
+							ng-change="loadCurrentPage()"
+							previous-text="&lsaquo;" 
+							next-text="&rsaquo;" 
+							first-text="&laquo;" 
+							last-text="&raquo;">
+				</pagination>
+			</div>
+		</div>			
+		<div ng-show="!dataReceived" class="loader">
+			<img src="images/loader.gif" alt="Loading..." />
+		</div>
+		<div class="row acc-buttons">
+			<div class="form-group">
+				<div>
+					<button class="btn" ng-click="select()">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+						<span translate="cmd.cancel"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>

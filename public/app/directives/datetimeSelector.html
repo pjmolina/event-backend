@@ -1,0 +1,15 @@
+<div class="input-group datetimeSelector">
+	<input type="text" class="form-control" ng-required="required" ng-disabled="readonly" 
+	       datetime-picker="yyyy-MM-dd HH:mm" ng-model="ngModel" is-open="openedDialog" 
+	       timepicker-options="timeOptions" datepicker-options="dateOptions"
+ 		   today-text="{{'dates.today' | translate}}"
+		   clear-text="{{'dates.clear' | translate}}"
+		   close-text="{{'dates.close' | translate}}"
+		   date-text="{{'dates.date' | translate}}"
+		   time-text="{{'dates.time' | translate}}"
+		   now-text="{{'dates.now' | translate}}"
+	       />
+	<span class="input-group-btn">
+		<button type="button" class="btn btn-default" ng-disabled="readonly" ng-click="openCalendar($event)"><i class="fa fa-calendar"></i></button>
+	</span>
+</div>

@@ -1,0 +1,28 @@
+{
+    "name": "EventBackend",
+    "description": "EventBackend Conference info.",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "angular": "1.3.14",
+        "angular-route": "1.3.14",
+        "angular-loader": "1.3.14",
+        "angular-mocks": "1.3.14",
+        "angular-animate": "1.3.14",
+        "angular-cookies": "1.3.14",
+        "angular-sanitize": "1.3.14",
+        "angular-bootstrap": "0.12.1",
+        "angular-loading-bar": "~0.8.0",
+        "angular-translate": "~2.6.1",
+        "angular-translate-loader-static-files": "~2.6.1",        
+        "angular-translate-loader-partial": "~2.6.1",
+        "angularjs-geolocation": "~0.1.1",
+        "ngmap": "~1.7.10",
+        "textAngular": "~1.3.7",
+        "bootstrap-ui-datetime-picker": "~1.1.3",
+        "ng-sortable": "~1.3.0"
+    },
+    "resolutions": {
+        "angular": "1.3.14"
+    }
+}

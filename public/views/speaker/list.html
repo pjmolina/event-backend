@@ -1,0 +1,153 @@
+<div class="row">
+	<div class="col-md-12">
+	
+		<table id="caption" class="table">
+			<tr>
+				<td class="text-left">
+					<a ng-show="ui.canAdd" class="iconBig" alt="{{'cmd.add' | translate}}" ng-click="add()" >
+					    <span class="glyphicon glyphicon-plus"></span></a>
+				</td>
+				<td class="text-center">
+					<h3 translate="label.class.plural.speaker"></h3>
+				</td>
+				<td class="text-right">
+				  <a ng-show="ui.canQuery" class="iconBig" alt="{{'cmd.refresh' | translate}}" ng-click="refresh()">
+				      <span class="glyphicon glyphicon-refresh"></span></a>
+				</td>
+			</tr>
+		</table>
+
+		<div class="upperTableZone row">
+			<div class="btn-group cursor-pointer col-md-2" dropdown is-open="ui.dropdown.isOpen">
+				<button type="button" 
+				        class="btn btn-primary dropdown-toggle btn-sm" 
+				        data-toggle="dropdown" 
+				        aria-expanded="false"
+				        >
+					<span translate="cmd.bulkActions"></span>&nbsp;<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li>
+						<a data-ng-click="importData()">
+							<span class="glyphicon glyphicon-import"></span>
+							<span translate="cmd.importCsvOrXlsx"></span>
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a data-ng-click="exportAs('xlsx')">
+							<span class="glyphicon glyphicon-export"></span>
+							<span translate="cmd.exportXlsx"></span>
+						</a>
+					</li>
+					<li>
+						<a data-ng-click="exportAs('csv')">
+							<span class="glyphicon glyphicon-export"></span>
+							<span translate="cmd.exportCsv"></span>
+						</a>
+					</li>
+					<li>
+						<a data-ng-click="exportAs('xml')">
+							<span class="glyphicon glyphicon-export"></span>
+							<span translate="cmd.exportXml"></span>
+						</a>
+					</li>
+					
+					<li ng-hide="selectionContext.noneSelected" class="divider"></li>
+					<li ng-hide="selectionContext.noneSelected">
+						<a class="error" data-ng-click="deleteSelected()">
+							<span class="glyphicon glyphicon-remove error"></span> 
+							<span translate="grid.deleteSelection"></span>
+							{{getSelectedItems().length | number}}
+							<span translate="grid.items"></span>
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a class="error" data-ng-click="deleteByQuery()">
+							<span class="glyphicon glyphicon-remove error"></span>
+							<span translate="grid.deleteFiltered"></span>
+							{{searchContext.totalItems | number}}
+							<span translate="grid.items"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<search-tool class="col-md-10"
+						 ng-model="searchContext"
+						 search="refresh">
+			</search-tool>
+		</div>
+
+		<table id="itemList" class="table data-table table-hover table-striped table-condensed" ng-show="dataReceived">
+			<thead>
+				<th>
+					<input type="checkbox" data-ng-model="selectionContext.allSelected" data-ng-click="selectAll($event)" tooltip="{{'grid.selectUnselectAll' | translate }}">
+				</th>				
+				<th ng-click="sortBy('name')">Name<sort-column ng-model="searchContext.sort.name"></sort-column></th>
+				<th ng-click="sortBy('surname')">Surname<sort-column ng-model="searchContext.sort.surname"></sort-column></th>
+				<th ng-click="sortBy('photo')">Photo<sort-column ng-model="searchContext.sort.photo"></sort-column></th>
+				<th ng-click="sortBy('blog')">Blog<sort-column ng-model="searchContext.sort.blog"></sort-column></th>
+				<th ng-click="sortBy('twitter')">Twitter<sort-column ng-model="searchContext.sort.twitter"></sort-column></th>
+				<th ng-click="sortBy('linkedin')">Linkedin<sort-column ng-model="searchContext.sort.linkedin"></sort-column></th>
+				<th ng-click="sortBy('github')">Github<sort-column ng-model="searchContext.sort.github"></sort-column></th>
+				<th ng-click="sortBy('bio')">Bio<sort-column ng-model="searchContext.sort.bio"></sort-column></th>
+				
+				<th></th>
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="speaker in dataList">
+					<td>
+						<input type="checkbox" data-ng-model="speaker._isSelected" data-ng-click="selectItem(speaker, $event)">
+					</td>			
+					<td class="data"><a ng-click="view(speaker)">{{speaker.name}}</a></td>
+					<td class="data">{{speaker.surname}}</td>
+					<td class="data"><a href="{{speaker.photo}}"><img ng-src="{{speaker.photo}}" width="30"/></a></td>
+					<td class="data">{{speaker.blog}}</td>
+					<td class="data">{{speaker.twitter}}</td>
+					<td class="data">{{speaker.linkedin}}</td>
+					<td class="data">{{speaker.github}}</td>
+					<td class="data">{{speaker.bio}}</td>
+					
+					<td>
+						<a ng-click="view(speaker)">
+							<span class="glyphicon glyphicon-th-list" tooltip="{{'cmd.view' | translate}}"></span>
+						</a>
+					</td>
+					<td>
+						<a ng-show="canEdit(speaker)" ng-click="edit(speaker)">
+							<span class="glyphicon glyphicon-edit" tooltip="{{'cmd.edit' | translate}}"></span>
+						</a>
+					</td>
+					<td>
+						<a ng-show="canDelete(speaker)" ng-click="delete(speaker)">
+							<span class="glyphicon glyphicon-remove color-red" tooltip="{{'cmd.delete' | translate}}"></span>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>			
+		
+		<div ng-show="dataReceived" class="text-center">
+			<div>
+				<pagination max-size="5" 
+							boundary-links="true" 
+				            total-items="searchContext.totalItems" 
+				            items-per-page="searchContext.pageSize" 
+				            ng-model="searchContext.currentPage" 
+							ng-change="loadCurrentPage()"
+							previous-text="&lsaquo;" 
+							next-text="&rsaquo;" 
+							first-text="&laquo;" 
+							last-text="&raquo;">
+				</pagination>
+			</div>
+		</div>			
+		<div ng-show="!dataReceived" class="loader">
+			<img src="images/loader.gif" alt="{{'general.loading' | translate }}" />
+		</div>
+
+	</div>
+</div>

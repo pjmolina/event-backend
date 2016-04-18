@@ -1,0 +1,4 @@
+---
+applications:
+- name: SampleBackend
+  command: node app/server.js

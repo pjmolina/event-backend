@@ -1,4 +1,5 @@
 // Services backend for Event Backend
+require('newrelic');
 
 //Set the enviroment variable NODE_ENV = devel | qa | production to select the running enviroment. Default: devel
 var environment = (process.env.NODE_ENV || 'devel');

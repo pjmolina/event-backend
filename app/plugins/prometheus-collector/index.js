@@ -84,18 +84,38 @@ function registerMetricsEndPoint(app) {
 	});
 }
 
+function preMetrics(req) {
+	req.sla = {
+		metrics: {
+			t : Date.now(),
+			operation : getOperation(req)
+		}
+	};
+}
+function postMetrics(req, res) {
+	if (req.sla && req.sla.metrics) {
+		var metrics = req.sla.metrics;
+		metrics.end = Date.now();
+		metrics.ellapsedMs = metrics.end - metrics.t;        
+		metrics.result = res.statusCode;
+		reportMetrics(metrics);         
+	}	
+}
 function reportMetricsMiddleware(req, res, next) {
+	preMetrics(req);
 	res.on("finish", function() {
-        if (req.sla && req.sla.metrics) {
-    		reportMetrics(req.sla.metrics);         
-        }
+        postMetrics(req, res);
 	});            
     next();
 }
 
+function getOperation(req) {
+    return req.originalUrl;    
+}
+
 function reportMetrics(metrics) {
 	apiCallCounter.inc( { code: metrics.result });
-	execTimeGauge.set ( { method: metrics.scope, code: metrics.result }, metrics.ellapsedMs );
+	execTimeGauge.set ( { method: metrics.operation, code: metrics.result }, metrics.ellapsedMs );
 	statusHistogram.labels(metrics.result).observe(metrics.ellapsedMs);
 
 }

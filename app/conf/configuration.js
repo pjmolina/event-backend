@@ -20,6 +20,7 @@ function addVersions(conf) {
 function getConfigurationByEnv(environment) {
 	//Default configuration object
 	var configuration = {
+		serviceName: 'eventapp',
 		environment: '',
 		security: {
 			rootAccount: 'root',

@@ -89,9 +89,11 @@ function register(app, options) {
     
     var data = {
         name : _conf.serviceName,
-        tags : ["hivepod", "microservice", "nodejs"],
+        id: _conf.serviceName + '-' + address,
         address : address,
+        serviceAddress : address,
         port : Number(_conf.appPort),
+        tags : ["hivepod", "microservice", "nodejs", "production"],
         check: {
             http: "http://" + address + ":" + _conf.appPort + "/ping",
             interval: "30s",

@@ -138,7 +138,7 @@ angular.module('myApp').service('XlsxService', ['$q', '$window', function($q, $w
 	
 	function insertCellValue(rows, line, col, cellContent) {
 		var row = rows[line]; //locateRow(rows, line);
-		if (row === null) {
+		if (!row) {
 			//insert row
 			row = {'line': line, cells: {} };
 			rows[line] = row;

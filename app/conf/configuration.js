@@ -133,7 +133,7 @@ function resolveMongoDbCnx() {
 		}
 	}
 	//Mongolab URI
-	return process.env.MONGOLAB_URI || defaultCnx;
+	return process.env.MONGODB_URI || defaultCnx;
 }
 
 module.exports.getConfiguration = getConfiguration;

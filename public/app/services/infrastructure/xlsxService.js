@@ -144,6 +144,7 @@ angular.module('myApp').service('XlsxService', ['$q', '$window', function($q, $w
 			rows[line] = row;
 		}
 		//insert cell
+		row.cells = row.cells || [];
 		var colIndex = convertColToNumber(col);
 		row.cells[colIndex] = {
 			'col': col, 

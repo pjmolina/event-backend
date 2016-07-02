@@ -10,8 +10,8 @@ function Metamodel(options) {
 }
 /**
   * Add a class to the model
-  * @param cl The class to add
-  * @return The model. 
+  * @param {Class} cl 	The class to add
+  * @return {Metamodel} The model. 
   */
 Metamodel.prototype.addClass = function(cl) {
 	this.classes.push(cl);
@@ -19,9 +19,9 @@ Metamodel.prototype.addClass = function(cl) {
 };
 /**
   * Retrieves a class by name
-  * @param clName		Class name
-  * @param ignoreCase 	If true: ignores case differences
-  * @return The class found or null if not found
+  * @param {string}  clName		Class name
+  * @param {boolean} ignoreCase 	If true: ignores case differences
+  * @return {Class}  The class found or null if not found
   */
 Metamodel.prototype.getClassByName = function(clName, ignoreCase) {
 	ignoreCase = ignoreCase || true;
@@ -29,8 +29,8 @@ Metamodel.prototype.getClassByName = function(clName, ignoreCase) {
 };
 /**
   * Add an association relation to the model
-  * @param association		Associciation to add
-  * @return The model.
+  * @param {Association }association		Associciation to add
+  * @return {Metamodel} The model.
   */
 Metamodel.prototype.addAssociation = function(association) {
 	this.associations.push(association);
@@ -39,8 +39,8 @@ Metamodel.prototype.addAssociation = function(association) {
 
 /**
   * Is an aggretation root or an embeded class?
-  * @param  className		Name of class to query
-  * @return boolean			true if aggregation root, false if embeded class
+  * @param  {string } className		Name of class to query
+  * @return {boolean}	  		    true if aggregation root, false if embeded class
   */
 Metamodel.prototype.isRootClass = function(className) {
 	return !this.isEmbededClass(className);
@@ -48,8 +48,8 @@ Metamodel.prototype.isRootClass = function(className) {
 
 /**
   * Is an  embeded class or an aggretation root?
-  * @param  className		Name of class to query
-  * @return boolean			true if embeded class, false if aggregation root 
+  * @param  {string} className		Name of class to query
+  * @return {boolean}		true if embeded class, false if aggregation root 
   */
 Metamodel.prototype.isEmbededClass = function(className) {
     for (var i = 0; i < this.associations.length; i++) {

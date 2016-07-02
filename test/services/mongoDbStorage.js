@@ -1,6 +1,6 @@
 var expect = require('expect.js');
 var mongoose = require('mongoose');
-var cnx; 
+var cnx; // eslint-disable-line no-unused-vars
 var sut = require('../../app/services/mongodbStorage.js');
 var fs = require('fs');
 

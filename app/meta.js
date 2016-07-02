@@ -1,5 +1,7 @@
 /**
   * Metamodel
+  * @constructor
+  * @param options 	Classes and associations to add if any.
   */
 function Metamodel(options) {
 	options = options || {};

@@ -1,26 +1,54 @@
-//Metamodel
+/**
+  * Metamodel
+  */
 function Metamodel(options) {
 	options = options || {};
 	this.classes = options.classes || [];
 	this.associations = options.associations || [];	
 }
+/**
+  * Add a class to the model
+  * @param cl The class to add
+  * @return The model. 
+  */
 Metamodel.prototype.addClass = function(cl) {
 	this.classes.push(cl);
 	return this;	
 };
+/**
+  * Retrieves a class by name
+  * @param clName		Class name
+  * @param ignoreCase 	If true: ignores case differences
+  * @return The class found or null if not found
+  */
 Metamodel.prototype.getClassByName = function(clName, ignoreCase) {
 	ignoreCase = ignoreCase || true;
 	return findByPropInCollection(this.classes, 'name', clName, ignoreCase);
 };
+/**
+  * Add an association relation to the model
+  * @param association		Associciation to add
+  * @return The model.
+  */
 Metamodel.prototype.addAssociation = function(association) {
 	this.associations.push(association);
 	return this;	
 };
 
+/**
+  * Is an aggretation root or an embeded class?
+  * @param  className		Name of class to query
+  * @return boolean			true if aggregation root, false if embeded class
+  */
 Metamodel.prototype.isRootClass = function(className) {
 	return !this.isEmbededClass(className);
 };
 
+/**
+  * Is an  embeded class or an aggretation root?
+  * @param  className		Name of class to query
+  * @return boolean			true if embeded class, false if aggregation root 
+  */
 Metamodel.prototype.isEmbededClass = function(className) {
     for (var i = 0; i < this.associations.length; i++) {
         var association = this.associations[i];

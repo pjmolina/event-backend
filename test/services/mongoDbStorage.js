@@ -5,11 +5,10 @@ var sut = require('../../app/services/mongodbStorage.js');
 var fs = require('fs');
 
 function init(done) {
-	var dbCnx = "mongodb://" + 
-				(process.env.DB_SERVER) ? process.env.DB_SERVER : "localhost:27017" +
-				"/eventBackendTest";
-	
-	cnx = mongoose.createConnection(dbCnx, {}, function(db) {
+	var dbServer = (process.env.DB_SERVER) ? process.env.DB_SERVER : "localhost:27017"; 
+	var dbCnx = "mongodb://" + dbServer + "/eventBackend_BinaryTest";
+	mongoose.createConnection(dbCnx);
+	cnx = mongoose.connect(dbCnx, {}, function(db) {
 		sut.apply(cnx);
 		done();
 	});

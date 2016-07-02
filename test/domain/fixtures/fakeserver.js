@@ -15,8 +15,8 @@ var server;
 // __Module Definition__
 var fixture = module.exports = {
     init: function (done) {
-		var dbCnx = (process.env.DB) 
-				? "mongodb://"+process.env.DB+"/eventBackendTest"  //DB passed from event var.
+		var dbCnx = (process.env.DB_SERVER) 
+				? "mongodb://"+process.env.DB_SERVER+"/eventBackendTest"  //DB passed from event var.
 				: config.mongo.url; //Local config
         mongoose.connect(dbCnx);
         

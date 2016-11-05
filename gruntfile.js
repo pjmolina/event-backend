@@ -49,7 +49,7 @@ module.exports = function (grunt) {
 							var mapsRegex = /\/\/maps\.googleapis\.com\/maps\/api\/js/;
 							if (mapsRegex.test(content)) {
 								content = content.replace(mapsRegex, 
-							       '//maps.googleapis.com/maps/api/js?apikey=' + 
+							       '//maps.googleapis.com/maps/api/js?key=' + 
 								   process.env.GOOGLE_MAP_APIKEY);
                             } 
 						}

@@ -29,6 +29,9 @@ function getConfigurationByEnv(environment) {
 			//set SERVER-SECRET var on production to a well-know value 
 			serverSecret: process.env.SERVER_SECRET || "sample-symetric-key-2014" 
 		},
+		//google maps
+		googleMapsApikey: process.env.GOOGLE_MAP_APIKEY || null,
+		
 		//cloud storage service for binary fields
 		storage: {
 			provider: '<<provider>>',   //sample pkgcloud provider. See: https://github.com/pkgcloud/pkgcloud#storage 

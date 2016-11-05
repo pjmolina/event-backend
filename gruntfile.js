@@ -45,6 +45,15 @@ module.exports = function (grunt) {
                 dest: 'public-html/' + ENV,
                 options: {
                     process: function (content, srcpath) {
+						if (process.env.GOOGLE_MAP_APIKEY) {
+							var mapsRegex = /\/\/maps\.googleapis\.com\/maps\/api\/js/;
+							if (mapsRegex.test(content)) {
+								content = content.replace(mapsRegex, 
+							       '//maps.googleapis.com/maps/api/js?apikey=' + 
+								   process.env.GOOGLE_MAP_APIKEY);
+                            } 
+						}
+						
                         if(/\.html$/.test(srcpath)) {
                             var regex =  /<!-- JS-start -->[\s\S.]*<!-- JS-end -->/; 
                             if (regex.test(content)) {

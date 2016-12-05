@@ -18,7 +18,7 @@ function apply(app, models, passport, configuration) {
 	//Disable it commenting this block if you don not need it. ----------
 	app.all('*', function(req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");  //Change * to your host domain
-		res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+		res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, x-xsrf-token");
 		res.header("Access-Control-Allow-Methods", "OPTIONS,GET,POST,PUT,DELETE");
 	    next();
 	});

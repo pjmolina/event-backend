@@ -229,7 +229,13 @@ function apply(app, models, passport, configuration) {
 			) ? true : false;
 	}
 	
+	var corsOptionsMiddleware = function (req, res, next) {
+		return res.end();
+	};
+	
 	//API Auth ----------
+	//allow options to pass (no security check for OPTIONS verb)
+	app.options('*', corsOptionsMiddleware);
 	app.all('*', isAuthenticated, isAuthorized);
 
 	return this;

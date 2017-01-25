@@ -84,7 +84,7 @@
     "request": "~2.69.0"
   },
   "engines": {
-    "node": "5.x",
+    "node": "7.x",
     "npm": "3.x"
   }
 }

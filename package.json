@@ -30,6 +30,7 @@
     "baucis": "1.6.5",
     "baucis-swagger": "1.1.2",
     "baucis-swagger2": "0.3.15",
+    "baucis-openapi3": "^0.1.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.2",
     "bower": "^1.7.7",
@@ -74,7 +75,6 @@
     "xlsx": "^0.8.0"
   },
   "devDependencies": {
-    "baucis-openapi3": "^0.1.1",
     "deco": "~0.12.3",
     "eslint-html-reporter": "^0.4.14",
     "expect.js": "~0.3.1",

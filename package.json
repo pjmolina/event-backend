@@ -1,4 +1,4 @@
-{ 
+{
   "name": "EventBackend",
   "license": "MIT",
   "description": "EventBackend Conference Info.",
@@ -74,14 +74,15 @@
     "xlsx": "^0.8.0"
   },
   "devDependencies": {
+    "baucis-openapi3": "^0.1.1",
     "deco": "~0.12.3",
-    "expect.js": "~0.3.1",
     "eslint-html-reporter": "^0.4.14",
+    "expect.js": "~0.3.1",
     "istanbul": "^0.4.2",
     "jasmine": "^2.4.1",
     "mocha-teamcity-reporter": "^1.0.0",
-    "shelljs": "^0.6.0",
-    "request": "~2.69.0"
+    "request": "~2.69.0",
+    "shelljs": "^0.6.0"
   },
   "engines": {
     "node": "7.x",

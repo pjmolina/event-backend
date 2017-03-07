@@ -173,9 +173,8 @@ function apply(app, models, passport, configuration) {
 	//Auth helpers-----
 	var isAuthenticated = function (req, res, next) {
 		if (!isProtectedContent(req)) {
-			return next(); //Public content (no protection)
-		}
-	
+			return next(); //Public content (no auth required)
+		}	
 		if (req.isAuthenticated()) {
 			return next();
 		} else {
@@ -205,8 +204,8 @@ function apply(app, models, passport, configuration) {
 		}
 	};
 	
-	var isAuthorized = function (req, res, next) {
-		if (req.url.substr(0, 10) === '/api/admin') {
+	var isAuthorized = function (req, res, next) {	
+		if (startsWith(req.url, '/api/admin')) {
 			if (req.user.role === "Admin") {
 				return next();
 			} else {
@@ -216,9 +215,24 @@ function apply(app, models, passport, configuration) {
 			return next();
 		}
 	};
+	function startsWith(text, prefix) {
+		if (!prefix) { return true; }
+		if (!text) { return false; }
+		if ((text.length < prefix.length)) { return false; }
+		return (text.substr(0, prefix.length) === prefix);
+	}
 	
 	function isProtectedContent(req) {
-		return req.url.substr(0, 5) === '/api/' || req.url.substr(0, 5) === '/api?';
+		if (startsWith(req.url, '/api/documentation') ||
+		    startsWith(req.url, '/api/swagger.json') ||
+		    startsWith(req.url, '/api/openapi.json') 
+		   ) {
+			// public resources
+			return false;
+		}
+		// protected resources
+		return startsWith(req.url, '/api/') || 
+		       startsWith(req.url, '/api?');
 	}
 	
 	function isProviderConfigured(providerName) {

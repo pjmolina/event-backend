@@ -458,6 +458,11 @@ function authorizeResourceOperationMiddleware(req, res, next) {
 			objectIds: objectId ? [objectId] : []
 	};
 	
+	if (!resource) {
+		// operations not linked to resources: example: api doc
+		return next();
+	}
+
 	//Execute operation middlewares 
 	for (var i = 0; i < operationMiddlewares.length; i++) {
 		var middleware = operationMiddlewares[i];

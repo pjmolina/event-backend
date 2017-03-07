@@ -818,3 +818,12 @@ ul.datetime-picker-dropdown {
 		visibility:  visible;
 	}
 }
+
+.apidoc-table th {
+	text-align: left;
+	padding-left: 0px;
+}
+.apidoc-table td {
+	text-align: left;
+	padding-right: 1em;
+}

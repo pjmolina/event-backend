@@ -21,6 +21,7 @@ var mongoose = require('mongoose');
 var baucis = require('baucis');
 require('baucis-swagger');
 require('baucis-swagger2');
+require('baucis-openapi3');
 var passport = require("passport");
 
 //Register plugins -----
@@ -154,6 +155,7 @@ Object.keys(models.models).forEach(function(key) {
 });
 console.log('\tSwagger 1.1 API docs                    on   /api/documentation');
 console.log('\tSwagger 2.0 API docs                    on   /api/swagger.json');
+console.log('\tOpenAPI 3.0 API docs                    on   /api/openapi.json');
 console.log('\tAngularJS admin web-client              on   /');
 console.log('\tServing public files from:                   ' + configuration.rootHttpDir);
 console.log('Application up and ready.');

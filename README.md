@@ -12,9 +12,13 @@ Event Backend services implemented using the following technologies:
 * Baucis
 * Swagger
 
-API REST published over `/api` on port 5000.
+API REST published over `/api` on default port 5000.
 
-Swagger documentation for `/api` available on `/api/documentation`
+API documentation for `/api` available on:
+ 
+* OpenAPI 3.0.0-rc0 on `/api/openapi.json`
+* Swagger 2.0 on `/api/swagger.json`
+* Swagger 1.1 on `/api/documentation`
 
 Admin frontend created with AngularJS 1.3 + Bootstrap.
 
@@ -23,7 +27,7 @@ Admin frontend created with AngularJS 1.3 + Bootstrap.
 
 ## How to run it? ##
 
-1. Open a console window and set the root folder (where the package.json file is located). 
+1. Open a console window and set the root folder (where the package.json file is located).
 2. Install dependencies executing `npm install`
 3. Run the server executing `node app\server.js`
 4. Default credentials are: root / 1234
@@ -42,7 +46,7 @@ Run
 Install Karma and dependencies:
 
 ```
-npm install -g karma-chrome-launcher karma-coverage karma-firefox-launcher karma-jasmine karma-junit-reporter karma-phantomjs-launcher karma-teamcity-reporter@0.2.1 mocha-teamcity-cov-reporter jasmine-reporters karma@0.9.8 protractor 
+npm install -g karma-chrome-launcher karma-coverage karma-firefox-launcher karma-jasmine karma-junit-reporter karma-phantomjs-launcher karma-teamcity-reporter@0.2.1 mocha-teamcity-cov-reporter jasmine-reporters karma@0.9.8 protractor
 ```
 
 And then run: `npm test-ui-single-run`

@@ -2,11 +2,7 @@
 # yarn lockfile v1
 
 
-abbrev@1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
-
-abbrev@1.0.x:
+abbrev@1, abbrev@1.0.x:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"
 
@@ -188,9 +184,9 @@ baucis-links@^1.0.0:
   dependencies:
     deco "^0.12.3"
 
-baucis-openapi3@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/baucis-openapi3/-/baucis-openapi3-0.1.2.tgz#efc0925706bdabfc3fc98a545108d0899c89027c"
+baucis-openapi3@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/baucis-openapi3/-/baucis-openapi3-0.1.3.tgz#d674c52530ed8aa5e1ef1540456073fc8cc25d06"
   dependencies:
     deco "~0.12.3"
 
@@ -2599,13 +2595,9 @@ safe-buffer@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
-sax@1.1.5:
+sax@1.1.5, sax@>=0.1.1, sax@>=0.6.0:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.1.5.tgz#1da50a8d00cdecd59405659f5ff85349fe773743"
-
-sax@>=0.1.1, sax@>=0.6.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.2.tgz#fd8631a23bc7826bef5d871bdb87378c95647828"
 
 "semver@2 || 3 || 4 || 5", semver@^5.1.0, semver@^5.3.0:
   version "5.3.0"

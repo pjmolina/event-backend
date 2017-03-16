@@ -246,7 +246,7 @@ function removeFromArray(array, item) {
 function addDeleteMany(controller, resourceName) {
     controller.swagger2.paths['/' + controller.model().plural() + '/deleteByIds'] = {
 		post: {
-			operationId: 'deleteByIds',
+			operationId: resourceName + 'DeleteByIds',
 			summary: 'Delete all the objects matching the ids provided.',
 			description: 'Delete a set of object in one shot.',
 			tags: [ camelize(resourceName) ],

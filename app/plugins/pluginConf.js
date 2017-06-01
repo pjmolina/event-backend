@@ -26,7 +26,7 @@ function getPluginsConfigurations() {
             options: {
                 //host: "192.168.99.1"
                 //consul: "consul"
-                consul: "172.17.0.2"
+                consul: process.env.CONSUL || "172.17.0.2"
             }
         }      		      		
     ];

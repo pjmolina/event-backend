@@ -16,8 +16,8 @@ ENV NODE_ENV=production
 WORKDIR /app
 RUN npm install -g grunt-cli 
 ADD package.json /app/
-ADD . /app
 RUN npm install
+ADD . /app
 RUN grunt release
 
 ENV PORT=80

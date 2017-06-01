@@ -26,7 +26,8 @@ function getPluginsConfigurations() {
             options: {
                 //host: "192.168.99.1"
                 //consul: "consul"
-                consul: process.env.CONSUL || "172.17.0.2"
+                consul: process.env.CONSUL_PORT_8500_TCP_ADDR || "172.17.0.2",
+                port: process.env.CONSUL_PORT_8500_TCP_PORT || 8500
             }
         }      		      		
     ];

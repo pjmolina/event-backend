@@ -85,7 +85,7 @@
     "shelljs": "^0.6.0"
   },
   "engines": {
-    "node": "7.x",
-    "npm": "4.x"
+    "node": "8.x",
+    "npm": "5.x"
   }
 }

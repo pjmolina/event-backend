@@ -30,7 +30,7 @@
     "baucis": "1.6.5",
     "baucis-swagger": "1.1.2",
     "baucis-swagger2": "^0.3.18",
-    "baucis-openapi3": "^0.2.1",
+    "baucis-openapi3": "^0.2.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.2",
     "bower": "^1.7.7",

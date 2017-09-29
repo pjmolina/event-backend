@@ -19,6 +19,7 @@ var MongoStore = require("connect-mongo")(session);
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var baucis = require('baucis');
+var helmet = require('helmet');
 require('baucis-swagger');
 require('baucis-swagger2');
 require('baucis-openapi3');
@@ -53,6 +54,8 @@ decorators.apply(baucis);
 
 // Create the express app 
 var app = express();
+
+app.use(helmet());
 
 //Configure app -------------------------------------
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';

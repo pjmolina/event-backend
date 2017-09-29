@@ -16,7 +16,7 @@ API REST published over `/api` on default port 5000.
 
 API documentation for `/api` available on:
  
-* OpenAPI 3.0.0-rc0 on `/api/openapi.json`
+* OpenAPI 3.0 on `/api/openapi.json`
 * Swagger 2.0 on `/api/swagger.json`
 * Swagger 1.1 on `/api/documentation`
 

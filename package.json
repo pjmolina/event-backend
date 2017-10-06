@@ -54,7 +54,7 @@
     "helmet": "^3.8.2",
     "jimp": "^0.2.21",
     "jshint-teamcity": "^1.0.6",
-    "mocha": "^3.5.3",
+    "mocha": "^4.0.0",
     "mongoose": "~4.4.10",
     "mongoose-geojson": "0.0.4",
     "morgan": "^1.9.0",

@@ -24,7 +24,7 @@
     "eslint-report": "eslint app/**/*.js test/**/*.js public/app/**/*.js -f node_modules/eslint-html-reporter/reporter.js -o qa/eslint-report.html",
     "jsdoc": "node_modules/.bin/jsdoc app/ public-html/production -d docs",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "commented-prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "async": "^1.5.2",

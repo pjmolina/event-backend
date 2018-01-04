@@ -88,84 +88,6 @@ module.exports = function (grunt) {
             all: ["public-html/"]
         },
 
-		jshint: {
-			backend: {
-				src: [ 
-					//inclusions
-                    'app/**/*.js',
-                    //exclusions
-                    '!**/*.min.js'
-                ],  
-				options: {					
-					curly: true,
-					eqeqeq: false,
-					eqnull: true,
-					browser: false,
-					globals: {
-                        node: true
-					}
-				}
-			},
-			frontend: {
-				src: [ 
-					//inclusions
-                    'public/**/*.js', 
-                    //exclusions
-                    '!**/*.min.js',
-                    '!public/bower_components/**/*.js',
-                    '!public/lib/**/*.js'
-				],  
-				options: {					
-					curly: true,
-					eqeqeq: false,
-					eqnull: true,
-					browser: true,
-					globals: {
-                        angular: true
-					}
-				}
-			},
-			backendTeamCity: {
-				src: [ //inclusions
-                       'app/**/*.js',
-                       //exclusions
-                       '!**/*.min.js'
-                       ],  
-				options: {
-					reporter: require('jshint-teamcity'),
-					//'-W014': true,
-					curly: true,
-					eqeqeq: false,
-					eqnull: true,
-					browser: false,
-					globals: {
-                         node: true
-					}
-				}
-			},
-            frontendTeamCity: {
-                src: [ //inclusions
-                       'public/**/*.js', 
-                       //exclusions
-                       '!**/*.min.js',
-                       '!public/bower_components/**/*.js',
-                       '!public/lib/**/*.js'
-                       ],  
-                options: {
-                    reporter: require('jshint-teamcity'),
-                    //'-W014': true,
-                    curly: true,
-                    eqeqeq: false,
-                    eqnull: true,
-                    browser: true,
-                    globals: {
-                        //jQuery: true,
-                         angular: true
-                    }
-                }
-            }
-		},
-
 		mochaTest: {  
             test: {  
                 // Ttest settings   
@@ -184,10 +106,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-test');
 
-	grunt.registerTask('jshintTeamcity',	['jshint:backendTeamCity', 'jshint:frontendTeamCity']);
 	grunt.registerTask('release', 			['clean:env', 'copy:resources', 'uglify', 'copy:html']);
     grunt.registerTask('devel',   			['clean:env', 'copy:all']);
 };

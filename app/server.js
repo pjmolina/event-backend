@@ -8,7 +8,6 @@ if (process.env.NEW_RELIC_LICENSE_KEY) {
 var environment = (process.env.NODE_ENV || 'devel');
 var configuration = require('./conf/configuration').getConfiguration(environment);
 
-var S = require('string');
 var express = require('express');
 var compression = require('compression');
 var bodyParser = require('body-parser');
@@ -154,7 +153,7 @@ console.log('Event Backend Backend - Server listening on: '+
 
 Object.keys(models.models).forEach(function(key) { 
     var resource = models.models[key];
-    console.log('\tResource ' + S(resource.name).padRight(30) +' on   /api/' + resource.plural);
+    console.log('\tResource ' + padRight(resource.name, 30, ' ') +' on   /api/' + resource.plural);
 });
 console.log('\tSwagger 1.1 API docs                    on   /api/documentation');
 console.log('\tSwagger 2.0 API docs                    on   /api/swagger.json');
@@ -163,3 +162,20 @@ console.log('\tAngularJS admin web-client              on   /');
 console.log('\tServing public files from:                   ' + configuration.rootHttpDir);
 console.log('Application up and ready.');
 
+
+function padRight(val, num, str) {
+    var padding = '';
+    var diff = num - val.length;
+    if (diff <= 5 && !str) {
+      padding = '00000';
+    } else if (diff <= 25 && !str) {
+      padding = '000000000000000000000000000';
+    } else {
+        for (let i = 0; i <= diff; i++) {
+            val += (str || '0');
+        }
+        return val;
+    }
+  
+    return val + padding.slice(0, diff);
+};

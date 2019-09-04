@@ -17,7 +17,8 @@ function apply(app, models, passport, configuration) {
 	//CORS enabled for allowing 3rd party web-apps to consume Swagger metadata and backend. 
 	//Disable it commenting this block if you don not need it. ----------
 	app.all('*', function(req, res, next) {
-		res.header("Access-Control-Allow-Origin", "*");  //Change * to your host domain
+		const origin = req.get('Origin') || 'http://localhost:4200'
+		res.header("Access-Control-Allow-Origin", origin); 
 		res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, x-xsrf-token");
 		res.header("Access-Control-Allow-Methods", "OPTIONS,GET,POST,PUT,DELETE");
 	    next();

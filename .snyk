@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.1
+version: v1.14.1
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -8,3 +8,20 @@ patch:
         patched: '2017-09-29T03:58:07.709Z'
     - mongoose > mquery > debug:
         patched: '2017-09-29T03:58:07.709Z'
+  SNYK-JS-LODASH-567746:
+    - grunt > grunt-legacy-log > lodash:
+        patched: '2020-05-01T04:21:56.284Z'
+    - grunt > grunt-legacy-util > lodash:
+        patched: '2020-05-01T04:21:56.284Z'
+    - mocha > yargs-unparser > lodash:
+        patched: '2020-05-01T04:21:56.284Z'
+    - newrelic > async > lodash:
+        patched: '2020-05-01T04:21:56.284Z'
+    - grunt > grunt-legacy-log > grunt-legacy-log-utils > lodash:
+        patched: '2020-05-01T04:21:56.284Z'
+    - pkgcloud > aws-sdk > xmlbuilder > lodash:
+        patched: '2020-05-01T04:21:56.284Z'
+    - pkgcloud > aws-sdk > xml2js > xmlbuilder > lodash:
+        patched: '2020-05-01T04:21:56.284Z'
+    - jimp > @jimp/plugins > @jimp/plugin-print > load-bmfont > parse-bmfont-xml > xml2js > xmlbuilder > lodash:
+        patched: '2020-05-01T04:21:56.284Z'

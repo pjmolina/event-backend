@@ -51,7 +51,7 @@
     "grunt-contrib-uglify": "^3.3.0",
     "grunt-mocha-test": "^0.12.7",
     "helmet": "^3.18.0",
-    "jimp": "^0.6.4",
+    "jimp": "^0.12.0",
     "jshint-teamcity": "^1.1.1",
     "mocha": "^6.1.4",
     "mongoose": "~4.4.10",

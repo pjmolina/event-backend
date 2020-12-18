@@ -54,7 +54,7 @@
     "jimp": "^0.6.4",
     "jshint-teamcity": "^1.1.1",
     "mocha": "^6.1.4",
-    "mongoose": "~4.4.10",
+    "mongoose": "~5.11.7",
     "mongoose-geojson": "0.0.4",
     "morgan": "^1.9.1",
     "multer": "^1.1.0",

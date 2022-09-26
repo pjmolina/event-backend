@@ -84,7 +84,7 @@
     "jasmine": "^3.4.0",
     "request": "^2.88.0",
     "shelljs": "^0.8.3",
-    "snyk": "^1.193.0"
+    "snyk": "^1.1012.0"
   },
   "engines": {
     "node": "8.x",

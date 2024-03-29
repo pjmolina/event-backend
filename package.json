@@ -41,7 +41,7 @@
     "consul": "^0.34.1",
     "cookie-parser": "^1.4.4",
     "event-stream": "^3.3.2",
-    "express": "^4.17.1",
+    "express": "^4.19.2",
     "express-session": "^1.16.2",
     "gridfs-stream": "^1.1.1",
     "grunt": "^1.0.4",
